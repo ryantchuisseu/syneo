@@ -1,0 +1,36 @@
+name: Bug
+description: Signaler un problème d'affichage ou de fonctionnement
+title: "Bug : "
+labels: ["bug"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page concernée
+      placeholder: ex. index.html
+    validations:
+      required: true
+  - type: textarea
+    id: reproduire
+    attributes:
+      label: Étapes pour reproduire
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+  - type: textarea
+    id: attendu
+    attributes:
+      label: Comportement attendu vs constaté
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Navigateur / appareil / largeur d'écran
+      placeholder: ex. Safari iOS 18, iPhone 15, 390 px
+  - type: textarea
+    id: captures
+    attributes:
+      label: Captures

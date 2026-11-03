@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sineo — La tech, rendue claire</title>
+  <meta name="description" content="Sineo rend la tech accessible : vulgarisation, conférences, partenariats et networking.">
+  <meta name="theme-color" content="#0b0d24">
+  <!-- i18n (plus tard) : <link rel="alternate" hreflang="en" href="/en/"> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html">Sineo<span>.</span></a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" aria-current="page">Accueil</a></li>
+          <li><a class="site-nav__link" href="vulgarisation.html">Vulgarisation</a></li>
+          <li><a class="site-nav__link" href="conferences.html">Conférences</a></li>
+          <li><a class="site-nav__link" href="partenariats.html">Partenariats</a></li>
+          <li><a class="site-nav__link" href="networking.html">Networking</a></li>
+          <li><a class="site-nav__link" href="a-propos.html">À propos</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">La tech, <em>rendue claire</em> pour tous.</h1>
+        <p class="hero__lead">
+          Sineo décrypte les technologies, réunit les curieux et les experts
+          lors de conférences, et connecte les acteurs qui font avancer l'écosystème.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="vulgarisation.html">Explorer les contenus</a>
+          <a class="btn btn--ghost" href="conferences.html">Prochaines conférences</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Piliers -->
+    <section class="section" aria-labelledby="piliers-titre">
+      <div class="container">
+        <header class="section__header">
+          <p class="section__eyebrow">Ce que nous faisons</p>
+          <h2 id="piliers-titre" class="section__title">Quatre piliers, une mission</h2>
+          <p class="section__lead">Rendre la technologie compréhensible et créer des liens entre ceux qui la font.</p>
+        </header>
+
+        <ul class="card-grid">
+          <li>
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">💡</div>
+              <h3 class="card__title">Vulgarisation</h3>
+              <p class="card__text">Articles, vidéos et fiches pour comprendre l'IA, le cloud, la cybersécurité… sans jargon.</p>
+              <a class="card__link" href="vulgarisation.html">Découvrir →</a>
+            </article>
+          </li>
+          <li>
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🎤</div>
+              <h3 class="card__title">Conférences</h3>
+              <p class="card__text">Des talks accessibles animés par des experts, en présentiel et en ligne.</p>
+              <a class="card__link" href="conferences.html">Voir l'agenda →</a>
+            </article>
+          </li>
+          <li>
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🤝</div>
+              <h3 class="card__title">Partenariats</h3>
+              <p class="card__text">Entreprises, écoles, associations : construisons ensemble des projets à impact.</p>
+              <a class="card__link" href="partenariats.html">Devenir partenaire →</a>
+            </article>
+          </li>
+          <li>
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🌐</div>
+              <h3 class="card__title">Networking</h3>
+              <p class="card__text">Rencontres et communauté pour échanger, apprendre et collaborer.</p>
+              <a class="card__link" href="networking.html">Rejoindre →</a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- À venir : chiffres clés, prochains événements, partenaires, témoignages (voir issue « Page : Accueil ») -->
+
+    <!-- CTA -->
+    <section class="section section--alt" aria-labelledby="cta-titre">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2 id="cta-titre" class="cta__title">Un projet, une idée de conférence ?</h2>
+            <p>Parlons-en : nous répondons sous 48 h.</p>
+          </div>
+          <a class="btn btn--ghost" href="contact.html">Nous contacter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="logo" href="index.html">Sineo<span>.</span></a>
+          <p>La tech, rendue claire pour tous.</p>
+        </div>
+        <nav aria-label="Activités">
+          <ul class="site-footer__list">
+            <li><a href="vulgarisation.html">Vulgarisation</a></li>
+            <li><a href="conferences.html">Conférences</a></li>
+            <li><a href="partenariats.html">Partenariats</a></li>
+            <li><a href="networking.html">Networking</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Sineo">
+          <ul class="site-footer__list">
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__bottom">© <span id="year">2026</span> Sineo. Tous droits réservés.</p>
+    </div>
+  </footer>
+</body>
+</html>

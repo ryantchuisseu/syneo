@@ -1,0 +1,43 @@
+name: Nouvelle page
+description: Créer ou refondre une page du site
+title: "Page : "
+labels: ["page", "feat"]
+body:
+  - type: input
+    id: fichier
+    attributes:
+      label: Fichier
+      placeholder: ex. conferences.html
+    validations:
+      required: true
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Objectif de la page
+      description: Ce que le visiteur doit comprendre ou faire.
+    validations:
+      required: true
+  - type: textarea
+    id: sections
+    attributes:
+      label: Sections attendues
+      value: |
+        - [ ] Hero (titre + accroche)
+        - [ ] …
+    validations:
+      required: true
+  - type: textarea
+    id: contenus
+    attributes:
+      label: Contenus nécessaires
+      description: Textes, images, liens à fournir.
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: Definition of Done
+      options:
+        - label: Responsive 360 / 768 / 1280 px
+        - label: Uniquement les tokens de css/tokens.css
+        - label: Accessibilité (contrastes AA, clavier, alt)
+        - label: Lien ajouté dans la navigation et le footer
+        - label: Balises title + meta description

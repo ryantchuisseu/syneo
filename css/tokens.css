@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Sineo — Design tokens (charte graphique)
+   Source unique de vérité : aucune valeur de design en dur ailleurs.
+   Valeurs provisoires, à remplacer par la charte définitive.
+   ========================================================================== */
+
+:root {
+  /* ---- Couleurs : palette brute ---- */
+  --sn-indigo-950: #0b0d24;
+  --sn-indigo-900: #14173a;
+  --sn-indigo-700: #2b2f7a;
+  --sn-indigo-500: #4f46e5;
+  --sn-indigo-100: #e7e6fb;
+  --sn-cyan-500:   #06b6d4;
+  --sn-cyan-100:   #d7f6fb;
+  --sn-amber-500:  #f59e0b;
+  --sn-gray-900:   #16181d;
+  --sn-gray-700:   #3d424d;
+  --sn-gray-500:   #6b7280;
+  --sn-gray-200:   #e5e7eb;
+  --sn-gray-50:    #f8f9fb;
+  --sn-white:      #ffffff;
+
+  /* ---- Couleurs : rôles (à utiliser dans les composants) ---- */
+  --color-bg:            var(--sn-white);
+  --color-bg-alt:        var(--sn-gray-50);
+  --color-surface:       var(--sn-white);
+  --color-text:          var(--sn-gray-900);
+  --color-text-muted:    var(--sn-gray-700);
+  --color-border:        var(--sn-gray-200);
+  --color-primary:       var(--sn-indigo-500);
+  --color-primary-hover: var(--sn-indigo-700);
+  --color-on-primary:    var(--sn-white);
+  --color-accent:        var(--sn-cyan-500);
+  --color-accent-soft:   var(--sn-cyan-100);
+  --color-highlight:     var(--sn-amber-500);
+  --color-hero-bg:       var(--sn-indigo-950);
+  --color-hero-text:     var(--sn-white);
+  --color-focus:         var(--sn-amber-500);
+
+  /* ---- Typographie ---- */
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", var(--font-sans);
+  --font-mono:    ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Échelle fluide (mobile → desktop) */
+  --fs-sm:   clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --fs-lg:   clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --fs-xl:   clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --fs-2xl:  clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --fs-3xl:  clamp(2.25rem, 1.6rem + 3vw, 4rem);
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  --lh-tight: 1.15;
+  --lh-base:  1.6;
+
+  /* ---- Espacements (base 4 px) ---- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---- Layout ---- */
+  --container-max: 72rem;   /* 1152 px */
+  --gutter:        1rem;    /* marge latérale mobile */
+  --header-h:      4rem;
+
+  /* ---- Rayons, ombres, bordures ---- */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1.25rem;
+  --radius-full: 999px;
+  --border:      1px solid var(--color-border);
+  --shadow-sm:   0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-md:   0 8px 24px rgb(20 23 58 / 0.10);
+
+  /* ---- Animations ---- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Points de rupture (référence, non utilisables dans @media) ----
+     sm 40em (640 px) · md 48em (768 px) · lg 64em (1024 px) */
+}
+
+@media (min-width: 48em) {
+  :root { --gutter: 2rem; }
+}
+
+/* ---- Mode sombre ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:            var(--sn-indigo-950);
+    --color-bg-alt:        var(--sn-indigo-900);
+    --color-surface:       var(--sn-indigo-900);
+    --color-text:          var(--sn-gray-50);
+    --color-text-muted:    #b6b9c9;
+    --color-border:        #2a2e55;
+    --color-primary:       #7c74ff;
+    --color-primary-hover: #a29cff;
+    --color-on-primary:    var(--sn-indigo-950);
+    --color-accent-soft:   #0e3a44;
+    --shadow-md:           0 8px 24px rgb(0 0 0 / 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
