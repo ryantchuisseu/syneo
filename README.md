@@ -9,8 +9,8 @@ Site vitrine de **Sineo** : vulgarisation tech, conférences, partenariats et ne
 ## Démarrage rapide
 
 ```bash
-git clone git@github.com:ryantchuisseu/sineo.git
-cd sineo
+git clone git@github.com:ryantchuisseu/syneo.git
+cd syneo
 python3 -m http.server 8000   # puis http://localhost:8000
 ```
 
@@ -19,7 +19,7 @@ N'importe quel serveur statique fait l'affaire (`npx serve`, extension Live Serv
 ## Arborescence
 
 ```
-sineo/
+syneo/
 ├── index.html              # Accueil
 ├── css/
 │   ├── tokens.css          # Charte : couleurs, typo, espacements, rayons, ombres

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Crée les labels et une issue par page du site Sineo.
-# Usage : ./scripts/create-issues.sh [owner/repo]   (défaut : ryantchuisseu/sineo)
+# Usage : ./scripts/create-issues.sh [owner/repo]   (défaut : ryantchuisseu/syneo)
 set -euo pipefail
 
-REPO="${1:-ryantchuisseu/sineo}"
+REPO="${1:-ryantchuisseu/syneo}"
 
 # --- Labels ---------------------------------------------------------------
 gh label create page    --repo "$REPO" --color 4f46e5 --description "Création ou refonte d'une page" --force
