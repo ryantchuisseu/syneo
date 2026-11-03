@@ -5,11 +5,17 @@ set -euo pipefail
 
 REPO="${1:-ryantchuisseu/syneo}"
 
-# --- Labels ---------------------------------------------------------------
-gh label create page    --repo "$REPO" --color 4f46e5 --description "Création ou refonte d'une page" --force
-gh label create feat    --repo "$REPO" --color 06b6d4 --description "Nouvelle fonctionnalité"         --force
-gh label create task    --repo "$REPO" --color f59e0b --description "Tâche (charte, contenu, outillage)" --force
-gh label create i18n    --repo "$REPO" --color 8b5cf6 --description "Traduction FR/EN"                --force
+# --- Labels (API REST) -----------------------------------------------------
+label() {
+  local name="$1" color="$2" desc="$3"
+  gh api "repos/$REPO/labels" -f name="$name" -f color="$color" -f description="$desc" --silent 2>/dev/null \
+    || gh api -X PATCH "repos/$REPO/labels/$name" -f color="$color" -f description="$desc" --silent
+  echo "🏷️  label $name"
+}
+label page 4f46e5 "Création ou refonte d'une page"
+label feat 06b6d4 "Nouvelle fonctionnalité"
+label task f59e0b "Tâche (charte, contenu, outillage)"
+label i18n 8b5cf6 "Traduction FR/EN"
 
 DOD='## Definition of Done
 - [ ] Responsive 360 / 768 / 1280 px
@@ -25,8 +31,8 @@ DOD='## Definition of Done
 new_issue() {
   local title="$1" body
   body="$(cat)"
-  gh issue create --repo "$REPO" --title "$title" --label page --label feat \
-    --body "$body"$'\n\n'"$DOD"
+  gh api "repos/$REPO/issues" -f title="$title" -f body="$body"$'\n\n'"$DOD" \
+    -f 'labels[]=page' -f 'labels[]=feat' --jq '"✅ #\(.number) \(.title) → \(.html_url)"'
 }
 
 new_issue "Page : Accueil" <<'EOF'
