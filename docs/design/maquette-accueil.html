@@ -161,6 +161,28 @@ p{margin:0}
 .ep div span{font-size:14px;color:#9FB0CF}
 
 /* ---------- Tribune ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{--bg:#EFE8DC;--fg:var(--nuit);background:var(--bg);color:var(--fg);text-decoration:none;padding:26px 24px 24px;display:flex;flex-direction:column;gap:12px;transition:transform .2s ease;
+  clip-path:polygon(0 16px,8px 16px,8px 8px,16px 8px,16px 0,calc(100% - 16px) 0,calc(100% - 16px) 8px,calc(100% - 8px) 8px,calc(100% - 8px) 16px,100% 16px,100% calc(100% - 16px),calc(100% - 8px) calc(100% - 16px),calc(100% - 8px) calc(100% - 8px),calc(100% - 16px) calc(100% - 8px),calc(100% - 16px) 100%,16px 100%,16px calc(100% - 8px),8px calc(100% - 8px),8px calc(100% - 16px),0 calc(100% - 16px))}
+.card:hover{transform:translateY(-6px)}
+.card.hot{--bg:var(--orange);--fg:#fff}
+.card .ct{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.card h3{font-size:clamp(24px,2.2vw,30px);line-height:1.05;font-weight:700;color:var(--fg)}
+.card.hot h3{color:#fff}
+.card.hot p{color:var(--nuit);opacity:1;font-weight:500}
+.card p{font-size:15px;line-height:1.5;color:var(--fg);opacity:.85;min-height:68px}
+.go{flex-shrink:0;width:56px;height:56px;background:var(--orange);position:relative;transition:transform .2s ease;
+  clip-path:polygon(0 8px,8px 8px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 8px),0 calc(100% - 8px))}
+.card.hot .go{background:var(--papier)}
+.go::before{content:"";position:absolute;left:18px;top:26px;width:22px;height:4px;background:#fff;transform:rotate(-45deg)}
+.go::after{content:"";position:absolute;left:24px;top:17px;width:12px;height:12px;border-top:4px solid #fff;border-right:4px solid #fff}
+.card.hot .go::before{background:var(--orange)}.card.hot .go::after{border-color:var(--orange)}
+.card:hover .go{transform:rotate(45deg)}
+.scene{width:100%;aspect-ratio:3/2;object-fit:cover;margin-top:6px;border:3px solid var(--nuit)}
+.motto{text-align:center;margin-top:64px}
+.motto .big{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(24px,3vw,42px);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;color:var(--bleu)}
+.motto .big em{font-style:normal;color:var(--orange)}
+.motto .sig{margin-top:18px;font-size:15px;color:var(--gris)}
 .tribune{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .post{background:#fff;border:1px solid var(--trait);display:flex;flex-direction:column}
 .post .ph{aspect-ratio:16/10;background:var(--ciel);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--bleu);font-size:14px;font-weight:600;position:relative}
@@ -216,6 +238,7 @@ footer p{color:#DCE6F7;font-size:16px}
   .logo b{display:none}
   .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
   .events{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .row{grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr)}
   .row .big-arr{display:none}
   footer .wrap{grid-template-columns:1fr 1fr}
@@ -228,7 +251,7 @@ footer p{color:#DCE6F7;font-size:16px}
   .hero-grid,.serie .wrap{grid-template-columns:1fr}
   .hero-grid .stage{grid-column:1;grid-row:auto;height:300px;margin:24px 0 0}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pillars,.events,.tribune,.partners{grid-template-columns:1fr}
+  .pillars,.events,.tribune,.cards,.partners{grid-template-columns:1fr}
   .partners div + div{padding-left:0;border-left:0}
   .row{grid-template-columns:1fr;gap:12px;padding-bottom:28px}
   .row .mascot{display:none}
@@ -378,16 +401,28 @@ footer p{color:#DCE6F7;font-size:16px}
   <div class="wrap">
     <div class="head">
       <div><span class="cap">La tribune</span><h2>La parole aux bâtisseurs.</h2></div>
-      <p class="lead" style="max-width:440px">Retours d'expérience, analyses, coups de cœur : les membres publient, l'équipe SYNEO vérifie avant la mise en ligne.</p>
+      <p class="lead" style="max-width:440px">Trois façons de prendre la parole. Les membres publient, l'équipe SYNEO relit et vérifie chaque contenu avant la mise en ligne.</p>
     </div>
-    <div class="tribune">
-      <article class="post"><div class="ph">[Photo du membre ou du projet]</div><div class="bd"><span class="who"><i></i>[Prénom Nom] · porteur de projet</span><h3>[Titre de la contribution]</h3><span class="ok">Vérifiée par SYNEO</span></div></article>
-      <article class="post"><div class="ph">[Photo du membre ou du projet]</div><div class="bd"><span class="who"><i style="background:var(--bleu)"></i>[Prénom Nom] · développeuse</span><h3>[Titre de la contribution]</h3><span class="ok">Vérifiée par SYNEO</span></div></article>
-      <article class="post"><div class="ph">[Photo du membre ou du projet]</div><div class="bd"><span class="who"><i style="background:var(--or)"></i>[Prénom Nom] · étudiant</span><h3>[Titre de la contribution]</h3><span class="ok">Vérifiée par SYNEO</span></div></article>
+    <div class="cards">
+      <a class="card" href="#">
+        <div class="ct"><h3>Raconte<br>ton parcours</h3><span class="go" aria-hidden="true"></span></div>
+        <p>Porteur de projet ? Partage tes réussites, tes galères et ce que tu as appris en chemin.</p>
+        <img class="px scene" src="../../assets/img/scenes/tribune-parcours.png" alt="Syn, une idée au-dessus de la tête, dans son bureau la nuit, avec vue sur Yaoundé">
+      </a>
+      <a class="card hot" href="#">
+        <div class="ct"><h3>Partage<br>ton expertise</h3><span class="go" aria-hidden="true"></span></div>
+        <p>Développeur, chercheur, mentor ? Publie une analyse ou un tutoriel pour celles et ceux qui démarrent.</p>
+        <img class="px scene" src="../../assets/img/scenes/tribune-expertise.png" alt="Néo présente des graphiques au micro, Syn lève la main pour poser une question">
+      </a>
+      <a class="card" href="#">
+        <div class="ct"><h3>Fais grandir<br>le réseau</h3><span class="go" aria-hidden="true"></span></div>
+        <p>Une rencontre, une offre de stage, un appel à projets ? Propose-le à toute la communauté.</p>
+        <img class="px scene" src="../../assets/img/scenes/tribune-reseau.png" alt="Syn et Néo main dans la main dans un espace de rencontre décoré de guirlandes">
+      </a>
     </div>
-    <div class="contrib">
-      <p>Tu as une expérience à partager ? Inscris-toi et propose ton contenu : on le relit, on le publie.</p>
-      <a class="btn b" href="#"><span class="arr"></span>proposer un contenu</a>
+    <div class="motto">
+      <p class="big">Partage ce que tu <em>bâtis</em>,<br>d'autres <em>bâtiront avec toi</em>.</p>
+      <p class="sig">La tribune SYNEO · chaque contenu est vérifié par l'équipe avant publication</p>
     </div>
   </div>
 </section>
