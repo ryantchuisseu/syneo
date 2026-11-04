@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SYNEO — prototype : rideau pixel et programmes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+<style>
+:root{--bleu:#02449B;--bleu-7:#2A63B4;--orange:#FC4C02;--orange-f:#C2410C;--nuit:#0B1A3A;--or:#F2B233;--papier:#FBF8F3;--gris:#4D5872;--trait:#0B1A3A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papier);color:var(--nuit);font-family:'Instrument Sans',system-ui,sans-serif}
+img.px{image-rendering:pixelated;display:block}
+
+/* ---------- Rideau de pixels ---------- */
+.curtain{position:relative;height:300px;overflow:visible;pointer-events:none}
+.curtain i{position:absolute;display:block;will-change:transform,opacity}
+.intro{max-width:1240px;margin:0 auto;padding:40px 48px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.intro h1{margin:0;font-family:Syne,sans-serif;font-weight:800;font-size:clamp(44px,6vw,84px);line-height:.95;letter-spacing:-.02em;color:var(--bleu)}
+.intro p{margin:16px 0 0;font-size:19px;line-height:1.6;color:var(--gris);max-width:560px}
+
+/* ---------- Liste des programmes ---------- */
+.list{max-width:1240px;margin:0 auto;padding:24px 48px 120px}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) 150px 64px minmax(0,1fr);align-items:center;gap:20px;padding:28px 0 40px;border-bottom:2px solid var(--trait);text-decoration:none;color:inherit}
+.row:first-child{border-top:0}
+.tag{grid-column:1/-1;justify-self:start;position:relative;display:inline-block;background:var(--bleu);color:#fff;font-weight:600;font-size:15px;line-height:1;padding:10px 14px;margin:8px 0 0}
+.tag::before{content:"";position:absolute;right:-10px;top:-10px;width:10px;height:10px;background:var(--bleu);box-shadow:-10px 0 0 var(--bleu)}
+.tag::after{content:"";position:absolute;right:-10px;top:0;width:10px;height:10px;background:var(--bleu)}
+.tag em{font-style:normal;color:var(--or)}
+.row h2{margin:0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.02em;color:var(--bleu)}
+.arrow{width:56px;height:44px;position:relative;transition:transform .25s ease}
+.arrow::before{content:"";position:absolute;left:0;top:18px;width:40px;height:8px;background:var(--nuit)}
+.arrow::after{content:"";position:absolute;right:6px;top:4px;width:26px;height:26px;border-top:8px solid var(--nuit);border-right:8px solid var(--nuit);transform:rotate(45deg);transform-origin:center}
+.row:hover .arrow,.row:focus-visible .arrow{transform:translateX(10px)}
+.row:focus-visible{outline:3px solid var(--orange);outline-offset:6px}
+.desc{margin:0;font-size:20px;line-height:1.55;font-weight:600;color:var(--nuit)}
+.desc u{text-decoration-color:var(--orange);text-decoration-thickness:3px;text-underline-offset:5px}
+.mascot{align-self:end;justify-self:center;margin-bottom:-42px;pointer-events:none}
+@media (max-width:760px){
+  .row{grid-template-columns:1fr;gap:14px}
+  .arrow{display:none}
+  .mascot{display:none}
+  .curtain{height:180px}
+}
+</style>
+</head>
+<body>
+
+<div class="curtain" id="curtain" aria-hidden="true"></div>
+
+<header class="intro">
+  <div>
+    <h1>Chaque étape<br>compte.</h1>
+    <p>De la conférence inaugurale au Forum National, chaque étape de PRISME prépare la suivante. On commence par comprendre, on finit par entreprendre, et on avance ensemble.</p>
+  </div>
+  <img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="width:180px">
+</header>
+
+<main class="list">
+  <a class="row" href="#">
+    <span class="tag">Lancement</span>
+    <h2>Conférence inaugurale</h2>
+    <img class="px mascot" src="../../assets/img/mascotte/neo-micro.svg" alt="" style="height:120px">
+    <span class="arrow" aria-hidden="true"></span>
+    <p class="desc">Le <u>18 novembre 2026</u> à l'ENSPY : lancement officiel, panel, et premier tournage de la série documentaire.</p>
+  </a>
+  <a class="row" href="#">
+    <span class="tag">Janvier → juin 2027</span>
+    <h2>Conférences thématiques</h2>
+    <img class="px mascot" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:132px">
+    <span class="arrow" aria-hidden="true"></span>
+    <p class="desc"><u>6 rencontres</u> sur 6 campus : comprendre, construire, appliquer, produire, monétiser, entreprendre.</p>
+  </a>
+  <a class="row" href="#">
+    <span class="tag">Juillet → novembre 2027</span>
+    <h2>Formation &amp; incubation</h2>
+    <img class="px mascot" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:112px">
+    <span class="arrow" aria-hidden="true"></span>
+    <p class="desc">Une cohorte de <u>40 à 60 porteurs de projet</u> formés et incubés, de l'idée au premier client.</p>
+  </a>
+  <a class="row" href="#">
+    <span class="tag">Toute l'année · <em>Nouveau</em></span>
+    <h2>Les Bâtisseurs</h2>
+    <img class="px mascot" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:104px">
+    <span class="arrow" aria-hidden="true"></span>
+    <p class="desc"><u>24 épisodes</u> de série documentaire qui suivent celles et ceux qui bâtissent l'écosystème, diffusés sur la CRTV.</p>
+  </a>
+  <a class="row" href="#">
+    <span class="tag">Décembre 2027</span>
+    <h2>Forum National</h2>
+    <img class="px mascot" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:112px">
+    <span class="arrow" aria-hidden="true"></span>
+    <p class="desc">Le grand rendez-vous de clôture : <u>projets incubés</u>, rencontres B2B et nouveaux partenariats.</p>
+  </a>
+</main>
+
+<script>
+/* Rideau de pixels : chaque carré a son propre seuil. Quand on descend,
+   il tombe et s'efface ; quand on remonte, il revient à sa place.
+   L'état dépend uniquement de la position de défilement. */
+(function () {
+  const el = document.getElementById('curtain');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const colors = ['#02449B', '#02449B', '#02449B', '#2A63B4', '#02449B', '#FC4C02', '#F2B233'];
+  let cells = [], size = 24;
+
+  function rand(seed) { const x = Math.sin(seed * 999.13) * 43758.5453; return x - Math.floor(x); }
+
+  function build() {
+    el.innerHTML = ''; cells = [];
+    const w = el.clientWidth;
+    size = w < 760 ? 16 : 24;
+    const cols = Math.ceil(w / size), rows = Math.floor(el.clientHeight / size);
+    for (let c = 0; c < cols; c++) {
+      // hauteur de chaque colonne : bord inférieur irrégulier
+      const h = Math.max(2, Math.round(rows * (0.45 + 0.35 * rand(c * 3.1) + 0.12 * Math.sin(c / 3))));
+      for (let r = 0; r < h; r++) {
+        const isEdge = r >= h - 2;
+        if (isEdge && rand(c * 17 + r) < 0.35) continue;              // pixels manquants sur le bord
+        const i = document.createElement('i');
+        const fromBottom = (h - r) / h;                                // le bas part en premier
+        const t = Math.min(.95, (1 - fromBottom) * .75 + rand(c * 7 + r * 13) * .25);
+        const col = r < h - 3 ? '#02449B' : colors[Math.floor(rand(c + r * 31) * colors.length)];
+        i.style.cssText = `left:${c * size}px;top:${r * size}px;width:${size}px;height:${size}px;background:${col}`;
+        el.appendChild(i);
+        cells.push({ i, t, dx: (rand(c * 5 + r) - .5) * 80, fall: 80 + rand(c + r * 7) * 160 });
+      }
+    }
+    // quelques confettis isolés sous le rideau
+    for (let k = 0; k < 26; k++) {
+      const i = document.createElement('i'); const s = size / 2;
+      i.style.cssText = `left:${rand(k * 9.7) * w}px;top:${el.clientHeight * (.55 + rand(k * 4.3) * .45)}px;width:${s}px;height:${s}px;background:${colors[k % colors.length]}`;
+      el.appendChild(i);
+      cells.push({ i, t: rand(k * 2.9) * .5, dx: (rand(k) - .5) * 60, fall: 120 });
+    }
+    update();
+  }
+
+  function update() {
+    if (reduce) return;
+    const p = Math.min(1, Math.max(0, window.scrollY / 520));       // 0 en haut, 1 après 520 px
+    for (const c of cells) {
+      const k = Math.min(1, Math.max(0, (p - c.t) / .3));
+      const e = k * k;                                                // accélère en tombant
+      c.i.style.transform = k ? `translate(${c.dx * e}px, ${c.fall * e}px) rotate(${e * 90}deg) scale(${1 - e * .5})` : '';
+      c.i.style.opacity = String(1 - k);
+    }
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', build);
+  build();
+})();
+</script>
+</body>
+</html>
