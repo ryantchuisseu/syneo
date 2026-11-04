@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>SYNEO — Livre de marque v2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+<style>
+:root{
+  --bleu:#02449B; --bleu-7:#2A63B4; --bleu-5:#6E95CF; --bleu-3:#AFC6E8; --ciel:#DCEBFF;
+  --orange:#FC4C02; --orange-f:#C2410C; --peche:#FFE3D4;
+  --nuit:#0B1A3A; --gris:#4D5872; --trait:#E4DDD1;
+  --papier:#FBF8F3; --or:#F2B233; --blanc:#FFFFFF;
+  --u:8px;
+}
+@page{size:1600px 1000px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#DAD5CC}
+body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--nuit);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:1600px;height:1000px;position:relative;overflow:hidden;background:var(--papier);page-break-after:always;break-after:page;margin:0 auto}
+.in{position:absolute;inset:96px 112px 104px}
+h1,h2,h3,.syne{font-family:Syne,sans-serif;font-weight:700;margin:0;letter-spacing:-.01em}
+h2{font-size:64px;line-height:1.02;color:var(--bleu)}
+h3{font-size:22px;color:var(--nuit)}
+p{margin:0;font-size:18px;line-height:1.6;color:var(--gris)}
+p strong{color:var(--nuit);font-weight:600}
+img.px{image-rendering:pixelated;display:block}
+.small{font-size:13px;line-height:1.5;color:var(--gris)}
+.cap{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
+/* En-tête et pied de page courants */
+.run{position:absolute;left:112px;right:112px;top:40px;display:flex;justify-content:space-between;align-items:center}
+.run .cap b{color:var(--bleu)}
+.foot{position:absolute;left:112px;right:112px;bottom:40px;display:flex;justify-content:space-between;align-items:flex-end}
+/* La progression : 4 carrés qui grandissent, du bleu à l'orange */
+.prog{display:inline-flex;align-items:flex-end;gap:4px}
+.prog i{display:block}
+.prog i:nth-child(1){width:8px;height:8px;background:var(--bleu)}
+.prog i:nth-child(2){width:8px;height:12px;background:var(--bleu-7)}
+.prog i:nth-child(3){width:8px;height:16px;background:#E8641E}
+.prog i:nth-child(4){width:8px;height:20px;background:var(--orange)}
+.prog.l i:nth-child(1){width:16px;height:16px}.prog.l i:nth-child(2){width:16px;height:24px}.prog.l i:nth-child(3){width:16px;height:32px}.prog.l i:nth-child(4){width:16px;height:40px}.prog.l{gap:8px}
+/* Bouton : coins en escalier de 8 px */
+.btn{display:inline-flex;align-items:center;gap:14px;height:64px;padding:0 32px;background:var(--orange);color:#fff;font-family:Syne,sans-serif;font-weight:700;font-size:20px;text-decoration:none;white-space:nowrap;
+  clip-path:polygon(0 16px,8px 16px,8px 8px,16px 8px,16px 0,calc(100% - 16px) 0,calc(100% - 16px) 8px,calc(100% - 8px) 8px,calc(100% - 8px) 16px,100% 16px,100% calc(100% - 16px),calc(100% - 8px) calc(100% - 16px),calc(100% - 8px) calc(100% - 8px),calc(100% - 16px) calc(100% - 8px),calc(100% - 16px) 100%,16px 100%,16px calc(100% - 8px),8px calc(100% - 8px),8px calc(100% - 16px),0 calc(100% - 16px))}
+.btn.b{background:var(--bleu)}
+.btn.sm{height:48px;padding:0 22px;font-size:16px}
+.arr{width:20px;height:14px;position:relative;display:inline-block}
+.arr::before{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:currentColor}
+.arr::after{content:"";position:absolute;right:2px;top:2px;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+/* Étiquette avec marche pixel */
+.tag{position:relative;display:inline-block;background:var(--bleu);color:#fff;font-weight:600;font-size:14px;line-height:1;padding:9px 14px;margin:8px 16px 0 0}
+.tag::before{content:"";position:absolute;right:-8px;top:-8px;width:8px;height:8px;background:inherit;box-shadow:-8px 0 0 0 var(--tc,var(--bleu))}
+.tag::after{content:"";position:absolute;right:-8px;top:0;width:8px;height:8px;background:inherit}
+.tag.o{background:var(--orange);--tc:var(--orange)}
+.tag.g{background:var(--or);color:var(--nuit);--tc:var(--or)}
+.rule{height:1px;background:var(--trait)}
+.chip{width:100%;display:flex;flex-direction:column}
+.grid-bg{background-image:linear-gradient(var(--trait) 1px,transparent 1px),linear-gradient(90deg,var(--trait) 1px,transparent 1px)}
+.ok,.ko{font-size:12px;font-weight:700;letter-spacing:.14em;display:flex;align-items:center;gap:8px}
+.ok{color:var(--bleu)}.ko{color:var(--orange-f)}
+.ok::before,.ko::before{content:"";width:8px;height:8px;background:currentColor}
+.corner-tab{position:absolute;left:0;bottom:0;width:48px;height:48px;background:var(--bleu)}
+.corner-tab::after{content:"";position:absolute;left:16px;top:16px;width:12px;height:12px;border-top:3px solid #fff;border-right:3px solid #fff}
+.ropes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ropes path{fill:none;stroke-width:32}
+.z{position:relative;z-index:1}
+.ph{background:var(--ciel);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:500;color:var(--bleu);padding:24px}
+</style>
+</head>
+<body>
+
+<!-- ================= 1. COUVERTURE ================= -->
+<div class="page">
+  <img src="../../assets/img/logo-syneo-transparent.png" alt="SYNEO" style="position:absolute;left:112px;top:88px;width:128px">
+  <div class="cap" style="position:absolute;right:112px;top:104px;text-align:right">Livre de marque · v2<br><span style="color:var(--bleu)">Novembre 2026</span></div>
+  <div class="z" style="position:absolute;left:112px;top:360px;width:820px">
+    <div class="prog l" style="margin-bottom:40px"><i></i><i></i><i></i><i></i></div>
+    <h1 style="font-size:132px;line-height:.92;color:var(--bleu);letter-spacing:-.03em">Bâtir<br>ensemble<span style="color:var(--orange)">.</span></h1>
+    <p style="font-size:22px;margin-top:36px;max-width:560px">L'identité visuelle de SYNEO, l'association qui connecte les talents pour construire le développement.</p>
+  </div>
+  <svg class="ropes" viewBox="0 0 1600 1000" aria-hidden="true"><defs>
+      <linearGradient id="fbc" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="420" y2="0"><stop offset="0" stop-color="#02449B" stop-opacity="0"/><stop offset="1" stop-color="#02449B"/></linearGradient>
+      <linearGradient id="foc" gradientUnits="userSpaceOnUse" x1="1600" y1="0" x2="1180" y2="0"><stop offset="0" stop-color="#FC4C02" stop-opacity="0"/><stop offset="1" stop-color="#FC4C02"/></linearGradient>
+      <linearGradient id="lgc" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="0"><stop offset="0" stop-color="#02449B"/><stop offset=".55" stop-color="#2A63B4"/><stop offset="1" stop-color="#FC4C02"/></linearGradient>
+    </defs>
+    <path d="M -20 296 H 980 A 120 120 0 0 1 1100 416 V 1040" stroke="url(#fbc)"/>
+    <path d="M 1620 680 H 1020 A 120 120 0 0 0 900 800 V 1040" stroke="url(#foc)"/>
+  </svg>
+  <img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="Syn et Néo main dans la main, debout sur la corde" style="position:absolute;left:1150px;top:460px;width:300px">
+  <div style="position:absolute;left:0;right:0;bottom:0">
+    <img class="px" src="../../assets/img/mascotte/yaounde-bleu.svg" alt="" style="width:100%;height:auto">
+    <div style="height:56px;background:var(--bleu)"></div>
+  </div>
+</div>
+
+<!-- ================= 2. MANIFESTE ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">Manifeste</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1.25fr 1fr;gap:120px">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+      <div class="prog"><i></i><i></i><i></i><i></i></div>
+      <p class="syne" style="font-size:54px;line-height:1.08;color:var(--bleu);font-weight:700">Seuls, nous créons des entreprises. <span style="color:var(--orange)">Ensemble,</span> nous bâtissons des écosystèmes.</p>
+      <p style="max-width:620px">Notre logo montre quatre personnes, de l'enfant à l'adulte, qui avancent main dans la main sur une même courbe. C'est notre promesse : <strong>transmettre</strong>, <strong>faire grandir</strong>, <strong>relier</strong>. Cette charte traduit cette promesse en règles simples, pour que chaque page, chaque post et chaque affiche disent « ça, c'est SYNEO ».</p>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center">
+      <div class="cap" style="margin-bottom:24px">Sommaire</div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">Le logo</span><span class="cap">03</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">Les couleurs</span><span class="cap">05</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">La typographie</span><span class="cap">06</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">La grille de 8</span><span class="cap">07</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">Syn &amp; Néo</span><span class="cap">08</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">Les éléments graphiques</span><span class="cap">10</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">La corde</span><span class="cap">11</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">Photos &amp; ton</span><span class="cap">12</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)"><span class="syne" style="font-size:24px;color:var(--bleu)">En situation</span><span class="cap">13</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">02</span></div>
+</div>
+
+<!-- ================= 3. LOGO ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">01 — Le logo</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 1.15fr;gap:96px">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <span class="cap" style="color:var(--orange)">01 — Le logo</span>
+      <h2>Quatre personnes,<br>une même courbe</h2>
+      <p>Le symbole se lit de gauche à droite comme une croissance : l'enfant devient adulte, le bleu devient orange. La courbe qui les porte, c'est SYNEO, le socle commun.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px">
+        <div><div class="syne" style="font-size:20px;color:var(--bleu)">Transmettre</div><p class="small" style="margin-top:6px">Les grands tiennent la main des plus jeunes.</p></div>
+        <div><div class="syne" style="font-size:20px;color:var(--bleu)">Grandir</div><p class="small" style="margin-top:6px">Chaque personnage est plus grand que le précédent.</p></div>
+        <div><div class="syne" style="font-size:20px;color:var(--orange-f)">Relier</div><p class="small" style="margin-top:6px">Une seule courbe, un seul mouvement.</p></div>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;background:var(--blanc);border:1px solid var(--trait)">
+      <div style="position:relative;padding:56px;border:1px dashed var(--bleu-3)">
+        <img src="../../assets/img/logo-syneo-transparent.png" alt="Logo SYNEO" style="width:340px;display:block">
+        <span class="small" style="position:absolute;top:-24px;left:0;color:var(--bleu-5)">zone de protection = hauteur du « S »</span>
+      </div>
+      <div style="position:absolute;left:32px;bottom:28px;display:flex;align-items:flex-end;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="width:64px"><span class="small">64 px</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="width:32px"><span class="small">32 px · minimum</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">03</span></div>
+</div>
+
+<!-- ================= 4. LOGO USAGES ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">01 — Le logo</span></div>
+  <div class="in" style="display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <h2>Bien le poser</h2>
+      <p style="max-width:520px">Le logo vit sur des fonds clairs et calmes. Ses couleurs et ses proportions ne bougent jamais.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:24px;flex:1">
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:var(--papier);border:1px solid var(--trait);display:flex;align-items:center;justify-content:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px"></div><span class="ok">Sur papier</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:center;justify-content:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px"></div><span class="ok">Sur blanc</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:var(--ciel);display:flex;align-items:center;justify-content:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px"></div><span class="ok">Sur bleu ciel</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:var(--papier);border:1px solid var(--trait);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px;transform:scaleX(1.45)"></div><span class="ko">Ne pas déformer</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:var(--papier);border:1px solid var(--trait);display:flex;align-items:center;justify-content:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px;filter:hue-rotate(120deg)"></div><span class="ko">Ne pas changer les couleurs</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:repeating-linear-gradient(45deg,#C98B5E 0 14px,#3E6F4E 14px 28px,#D9C26A 28px 42px);display:flex;align-items:center;justify-content:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:150px"></div><span class="ko">Pas de fond chargé</span></div>
+    </div>
+    <p class="small">⚠ Fichier actuel : image JPG de 535 px détourée. Pour l'impression et les grands formats, il faut la version vectorielle (SVG ou PDF) du graphiste, ou une reconstruction vectorielle à l'identique.</p>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">04</span></div>
+</div>
+
+<!-- ================= 5. COULEURS ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">02 — Les couleurs</span></div>
+  <div class="in" style="display:grid;grid-template-columns:420px 1fr;gap:72px">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <span class="cap" style="color:var(--orange)">02 — Les couleurs</span>
+      <h2>Deux couleurs,<br>beaucoup d'air</h2>
+      <p>Le bleu et l'orange sont relevés sur le logo. Le bleu porte la confiance : il sert aussi de couleur de texte. L'orange porte l'élan : il est rare, donc il se remarque.</p>
+      <div>
+        <div style="display:flex;height:16px"><div style="flex:60;background:var(--papier);border:1px solid var(--trait)"></div><div style="flex:22;background:var(--bleu)"></div><div style="flex:9;background:var(--ciel)"></div><div style="flex:7;background:var(--orange)"></div><div style="flex:2;background:var(--or)"></div></div>
+        <p class="small" style="margin-top:10px">Dosage : 60 papier · 22 bleu · 9 ciel · 7 orange · 2 or</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1.3fr 1fr;gap:16px">
+      <div style="grid-row:span 2;background:var(--bleu);color:#fff;padding:28px;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="syne" style="font-size:120px;line-height:.8;font-weight:800">Aa</span>
+        <div><div class="syne" style="font-size:30px">Bleu SYNEO</div><div style="font-size:15px;opacity:.85;margin-top:8px;line-height:1.7">#02449B · RVB 2 68 155<br>Titres, textes, aplats · 9,3:1 sur papier</div></div>
+      </div>
+      <div style="background:var(--orange);color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div class="syne" style="font-size:24px">Orange SYNEO</div><div style="font-size:14px;margin-top:6px;line-height:1.6">#FC4C02 · RVB 252 76 2<br>Boutons, accents, titres ≥ 24 px</div></div>
+      <div style="background:var(--nuit);color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div class="syne" style="font-size:24px">Nuit</div><div style="font-size:14px;margin-top:6px;line-height:1.6;opacity:.85">#0B1A3A · RVB 11 26 58<br>Texte courant, contour des pixels</div></div>
+      <div style="background:var(--ciel);color:var(--bleu);padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div class="syne" style="font-size:24px">Ciel</div><div style="font-size:14px;margin-top:6px;line-height:1.6">#DCEBFF · fonds de sections</div></div>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:16px">
+        <div style="background:var(--papier);border:1px solid var(--trait);color:var(--nuit);padding:18px 24px;display:flex;flex-direction:column;justify-content:flex-end"><div class="syne" style="font-size:20px">Papier</div><div style="font-size:13px;margin-top:4px">#FBF8F3 · fond principal</div></div>
+        <div style="background:var(--or);color:var(--nuit);padding:18px 24px;display:flex;flex-direction:column;justify-content:flex-end"><div class="syne" style="font-size:20px">Or PRISME</div><div style="font-size:13px;margin-top:4px">#F2B233 · réservé au programme PRISME</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="small">À trancher : la fiche client indique #1B3B6E et #F2701E, proches mais différents du logo. Cette charte suit le logo. · <span class="cap">05</span></span></div>
+</div>
+
+<!-- ================= 6. TYPOGRAPHIE ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">03 — La typographie</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 1fr;gap:96px">
+    <div style="display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <span class="cap" style="color:var(--orange)">03 — La typographie</span>
+        <h2>Syne, comme<br>SYNEO</h2>
+        <p>Pour les titres, <strong>Syne</strong> : une police large et franche, au caractère affirmé, dont le nom commence comme le nôtre. Pour les textes, <strong>Instrument Sans</strong> : sobre, très lisible sur un petit écran de téléphone.</p>
+      </div>
+      <div style="display:flex;gap:56px;align-items:flex-end">
+        <div><div class="syne" style="font-size:200px;line-height:.8;color:var(--bleu);font-weight:800">Aa</div><div class="cap" style="margin-top:16px">Syne · 600 700 800</div></div>
+        <div><div style="font-size:200px;line-height:.8;font-weight:500;color:var(--nuit)">Aa</div><div class="cap" style="margin-top:16px">Instrument Sans · 400 500 600</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:0">
+      <div style="padding:20px 0;border-top:1px solid var(--trait);display:grid;grid-template-columns:140px 1fr;align-items:baseline"><span class="small">Titre 1 · Syne 800<br>56 à 132 / 0,95</span><span class="syne" style="font-size:56px;line-height:.95;font-weight:800;color:var(--bleu);letter-spacing:-.02em">Bâtir ensemble</span></div>
+      <div style="padding:20px 0;border-top:1px solid var(--trait);display:grid;grid-template-columns:140px 1fr;align-items:baseline"><span class="small">Titre 2 · Syne 700<br>32 à 64 / 1,05</span><span class="syne" style="font-size:32px;line-height:1.05;color:var(--bleu)">Six campus, une synergie</span></div>
+      <div style="padding:20px 0;border-top:1px solid var(--trait);display:grid;grid-template-columns:140px 1fr;align-items:baseline"><span class="small">Titre 3 · Syne 600<br>24 / 1,2</span><span class="syne" style="font-size:24px;font-weight:600">Conférence inaugurale PRISME</span></div>
+      <div style="padding:20px 0;border-top:1px solid var(--trait);display:grid;grid-template-columns:140px 1fr;align-items:baseline"><span class="small">Texte · Instrument 400<br>18 / 1,6</span><span style="font-size:18px;line-height:1.6;color:var(--gris)">SYNEO organise des séminaires, des formations et des événements pour équiper les jeunes porteurs de projet.</span></div>
+      <div style="padding:20px 0;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait);display:grid;grid-template-columns:140px 1fr;align-items:baseline"><span class="small">Surtitre · Instrument 600<br>12 · capitales</span><span class="cap" style="color:var(--orange-f)">Première édition · Logiciel &amp; IA</span></div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">06</span></div>
+</div>
+
+<!-- ================= 7. GRILLE DE 8 ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">04 — La grille de 8</span></div>
+  <div class="in" style="display:grid;grid-template-columns:420px 1fr;gap:80px">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <span class="cap" style="color:var(--orange)">04 — La grille de 8</span>
+      <h2>Tout part<br>d'un pixel</h2>
+      <p>Les mascottes sont dessinées au pixel. Le reste de l'identité suit la même règle : marges, espacements, coins de boutons et étiquettes sont tous des <strong>multiples de 8</strong>. C'est ce qui rend l'ensemble cohérent, même quand on ne le voit pas.</p>
+      <div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:8px;height:8px;background:var(--bleu)"></div><span class="small">8</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:16px;height:16px;background:var(--bleu)"></div><span class="small">16</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:24px;height:24px;background:var(--bleu)"></div><span class="small">24</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:32px;height:32px;background:var(--bleu)"></div><span class="small">32</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:48px;height:48px;background:var(--bleu)"></div><span class="small">48</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:64px;height:64px;background:var(--bleu)"></div><span class="small">64</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:96px;height:96px;background:var(--orange)"></div><span class="small">96</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.2fr 1fr;gap:24px">
+      <div class="grid-bg" style="grid-column:span 2;background-size:16px 16px;background-color:var(--blanc);border:1px solid var(--trait);position:relative;display:flex;align-items:center;justify-content:center;gap:80px">
+        <!-- coin en escalier agrandi -->
+        <div style="position:relative;width:256px;height:192px">
+          <div style="position:absolute;inset:0;background:var(--orange);clip-path:polygon(0 64px,32px 64px,32px 32px,64px 32px,64px 0,100% 0,100% 100%,0 100%)"></div>
+          <span class="small" style="position:absolute;left:-8px;top:-28px">coin = 2 marches de 8 px</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <a class="btn" href="#"><span class="arr"></span>c'est parti</a>
+          <span class="small">Bouton · hauteur 64 · marges 32 · coins 8 + 8</span>
+        </div>
+      </div>
+      <div style="background:var(--blanc);border:1px solid var(--trait);padding:28px;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="cap">Étiquettes</span>
+        <div><span class="tag">Conférence</span><span class="tag o">Inscriptions ouvertes</span><span class="tag g">PRISME</span></div>
+        <span class="small">La marche en haut à droite fait 8 × 8 px.</span>
+      </div>
+      <div style="background:var(--blanc);border:1px solid var(--trait);padding:28px;display:flex;flex-direction:column;justify-content:space-between">
+        <span class="cap">Boutons secondaires</span>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><a class="btn b sm" href="#"><span class="arr"></span>découvrir</a><a class="btn sm" href="#" style="background:var(--nuit)">s'inscrire</a></div>
+        <span class="small">Un seul bouton orange par écran.</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">07</span></div>
+</div>
+
+<!-- ================= 8. MASCOTTES : CONSTRUCTION ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">05 — Syn &amp; Néo</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 1.2fr;gap:88px">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <span class="cap" style="color:var(--orange)">05 — Syn &amp; Néo</span>
+      <h2>Deux personnages<br>sortis du logo</h2>
+      <p><strong style="color:var(--bleu)">Syn</strong>, le petit bleu, se lance : l'étudiant, le porteur de projet. <strong style="color:var(--orange-f)">Néo</strong>, le grand orange, transmet : l'entrepreneur, le mentor. Chacun porte une écharpe aux couleurs de l'autre, dessinée comme la courbe du logo.</p>
+      <p class="syne" style="font-size:28px;color:var(--bleu)">SYN + NÉO = SYNEO</p>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+        <span class="cap" style="margin-right:8px">Palette pixel</span>
+        <i style="width:24px;height:24px;background:#0B1A3A"></i><i style="width:24px;height:24px;background:#2E6FD3"></i><i style="width:24px;height:24px;background:#02449B"></i><i style="width:24px;height:24px;background:#012F6D"></i><i style="width:24px;height:24px;background:#FF8A3D"></i><i style="width:24px;height:24px;background:#FC4C02"></i><i style="width:24px;height:24px;background:#C13A00"></i><i style="width:24px;height:24px;background:#FFFFFF;border:1px solid var(--trait)"></i>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="grid-bg" style="flex:1;background-size:12px 12px;background-color:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:24px;position:relative">
+          <img class="px" src="../../assets/img/mascotte/syn-salut.svg" alt="Syn" style="width:288px">
+        </div>
+        <div style="display:flex;justify-content:space-between"><span class="syne" style="font-size:22px;color:var(--bleu)">Syn</span><span class="small">24 × 26 pixels</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="grid-bg" style="flex:1;background-size:12px 12px;background-color:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:24px">
+          <img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="Néo" style="width:288px">
+        </div>
+        <div style="display:flex;justify-content:space-between"><span class="syne" style="font-size:22px;color:var(--orange-f)">Néo</span><span class="small">contour Nuit · 3 tons par couleur</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">08</span></div>
+</div>
+
+<!-- ================= 9. MASCOTTES : POSES ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">05 — Syn &amp; Néo</span></div>
+  <div class="in" style="display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <h2>Une pose par rubrique</h2>
+      <p style="max-width:540px">Les mascottes accompagnent, elles ne décorent pas. Chacune annonce le sujet de la section qu'elle borde.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:150px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Accueil</span><span class="small" style="margin-top:-8px">Néo salue</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/neo-micro.svg" alt="" style="height:150px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Conférences</span><span class="small" style="margin-top:-8px">Néo au micro</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:170px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Vulgarisation</span><span class="small" style="margin-top:-8px">Syn a une idée</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:#FFF7E6;border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:140px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">PRISME</span><span class="small" style="margin-top:-8px">Néo et le prisme d'or</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0"><img class="px" src="../../assets/img/mascotte/syn-escalier.svg" alt="" style="height:170px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Entreprendre</span><span class="small" style="margin-top:-8px">Syn monte les marches</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:150px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Tech &amp; IA</span><span class="small" style="margin-top:-8px">Syn code</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--blanc);border:1px solid var(--trait);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px"><img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="height:140px"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Networking</span><span class="small" style="margin-top:-8px">Main dans la main</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="flex:1;background:var(--bleu);display:flex;align-items:center;justify-content:center"><img class="px" src="../../assets/img/mascotte/avatar.svg" alt="" style="height:120px;background:var(--papier);border-radius:50%"></div><span class="syne" style="font-size:18px;color:var(--bleu)">Avatar</span><span class="small" style="margin-top:-8px">Réseaux sociaux, onglet</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="display:flex;gap:14px;align-items:baseline"><span class="ok">Oui</span><p class="small" style="font-size:15px">Une mascotte par section, au bord d'un titre ou d'un bouton, en pixels nets.</p></div>
+      <div style="display:flex;gap:14px;align-items:baseline"><span class="ko">Non</span><p class="small" style="font-size:15px">Les lisser, les étirer, en empiler trois, ou leur faire signer un texte officiel.</p></div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">09</span></div>
+</div>
+
+<!-- ================= 10. ÉLÉMENTS ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">06 — Les éléments graphiques</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:24px">
+    <div style="grid-column:span 3;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px">
+      <h2>Le petit kit</h2>
+      <p style="max-width:540px">Trois signes discrets, tirés du logo et de la ville, pour signer une page sans en rajouter.</p>
+    </div>
+    <div style="background:var(--blanc);border:1px solid var(--trait);padding:32px;display:flex;flex-direction:column;justify-content:space-between">
+      <span class="cap">La progression</span>
+      <div class="prog l" style="align-self:center"><i></i><i></i><i></i><i></i></div>
+      <p class="small" style="font-size:15px">Quatre carrés qui grandissent du bleu à l'orange, comme les personnages du logo. Ouvre les chapitres, ferme les pages, sert de puce.</p>
+    </div>
+    <div style="background:var(--blanc);border:1px solid var(--trait);padding:32px;display:flex;flex-direction:column;justify-content:space-between">
+      <span class="cap">Les confettis</span>
+      <img class="px" src="../../assets/img/mascotte/confettis.svg" alt="" style="width:100%">
+      <p class="small" style="font-size:15px">Carrés semés autour des titres et des mascottes, pour les moments de fête (lancement, résultats). Jamais sur le texte.</p>
+    </div>
+    <div style="background:var(--blanc);border:1px solid var(--trait);padding:32px;display:flex;flex-direction:column;justify-content:space-between">
+      <span class="cap">Le surlignage</span>
+      <div class="syne" style="font-size:40px;color:var(--bleu);line-height:1.1">le <span style="background:linear-gradient(transparent 60%,var(--peche) 60%)">18 novembre</span><br>à l'ENSPY</div>
+      <p class="small" style="font-size:15px">Un trait pêche sous le mot qui compte : une date, un lieu, un chiffre. Un seul par bloc de texte.</p>
+    </div>
+    <div style="grid-column:span 3;background:var(--bleu);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:32px 40px 0;min-height:250px">
+      <div style="display:flex;justify-content:space-between;color:#fff"><span class="cap" style="color:#C9D8F0">La silhouette de Yaoundé</span><span style="font-size:15px;color:#DCE6F7;max-width:560px;text-align:right">Les collines et l'antenne du mont Fébé, en pixels. À poser en bas des grandes surfaces bleues : pied de page, couverture, fin de section.</span></div>
+      <img class="px" src="../../assets/img/mascotte/yaounde-clair.svg" alt="Silhouette de Yaoundé" style="width:100%;opacity:.95">
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">10</span></div>
+</div>
+
+<!-- ================= 11. LA CORDE ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">06 — La corde</span></div>
+  <div class="in" style="display:grid;grid-template-columns:440px 1fr;gap:72px">
+    <div class="z" style="display:flex;flex-direction:column;justify-content:center;gap:24px">
+      <span class="cap" style="color:var(--orange)">06 — L'élément signature</span>
+      <h2>La corde</h2>
+      <p>C'est la courbe du logo, prolongée. Des rubans épais qui traversent les pages, tournent, se croisent et relient les sections entre elles, comme SYNEO relie les talents.</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:8px">
+        <div style="display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-top:1px solid var(--trait)"><span class="syne" style="color:var(--orange)">32</span><span style="font-size:16px">px d'épaisseur, toujours</span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-top:1px solid var(--trait)"><span class="syne" style="color:var(--orange)">96</span><span style="font-size:16px">px minimum de rayon dans les virages, à angle droit</span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-top:1px solid var(--trait)"><span class="syne" style="color:var(--orange)">3</span><span style="font-size:16px">cordes au plus par composition, qui se croisent dessus-dessous</span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)"><span class="syne" style="color:var(--orange)">↘</span><span style="font-size:16px">Elles entrent par un bord en fondu et sortent par un autre : jamais de bout coupé au milieu</span></div>
+      </div>
+    </div>
+    <div style="position:relative;background:var(--nuit);overflow:hidden">
+      <svg class="ropes" viewBox="0 0 900 800" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="r1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="300" y2="0"><stop offset="0" stop-color="#2E6FD3" stop-opacity="0"/><stop offset="1" stop-color="#2E6FD3"/></linearGradient>
+          <linearGradient id="r2" gradientUnits="userSpaceOnUse" x1="0" y1="800" x2="0" y2="520"><stop offset="0" stop-color="#FC4C02" stop-opacity="0"/><stop offset="1" stop-color="#FC4C02"/></linearGradient>
+          <linearGradient id="r3" gradientUnits="userSpaceOnUse" x1="900" y1="0" x2="560" y2="0"><stop offset="0" stop-color="#DCEBFF" stop-opacity="0"/><stop offset="1" stop-color="#DCEBFF" stop-opacity=".55"/></linearGradient>
+        </defs>
+        <path d="M 900 560 H 520 A 120 120 0 0 1 400 440 V -20" stroke="url(#r3)"/>
+        <path d="M -20 200 H 560 A 120 120 0 0 1 680 320 V 820" stroke="url(#r1)"/>
+        <path d="M 260 820 V 620 A 120 120 0 0 1 380 500 H 920" stroke="url(#r2)"/>
+        <path d="M 680 470 V 530" stroke="#2E6FD3"/>
+      </svg>
+      <img class="px" src="../../assets/img/mascotte/syn-salut.svg" alt="Syn marche sur la corde" style="position:absolute;left:470px;top:354px;width:120px">
+      <span class="small" style="position:absolute;left:28px;bottom:24px;color:#9FB0CF">Une corde passe tantôt dessus, tantôt dessous : on sent qu'elles s'entrelacent.</span>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">11</span></div>
+</div>
+
+<!-- ================= 12. PHOTOS & TON ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">07 — Photos &amp; ton</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 1fr;gap:96px">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span class="cap" style="color:var(--orange)">07 — Photos</span>
+      <h2 style="font-size:52px">De vrais visages</h2>
+      <p>L'équipe, les participants, les Bâtisseurs. Pas d'images de banque. Cadrage serré, en situation, lumière naturelle. Un coin bleu fléché signale une photo cliquable.</p>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:16px;flex:1">
+        <div class="ph" style="height:100%">[Portrait d'un participant, regard caméra]<span class="corner-tab"></span></div>
+        <div style="display:grid;grid-template-rows:1fr 1fr;gap:16px"><div class="ph">[Photo d'événement, plan large]</div><div class="ph">[Mains, carnet, écran : le détail]</div></div>
+      </div>
+      <p class="small">Toute personne photographiée donne son accord écrit avant publication.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span class="cap" style="color:var(--orange)">07 — Ton</span>
+      <h2 style="font-size:52px">On parle comme<br>on agit : ensemble</h2>
+      <p>Direct, chaleureux, un brin complice. On parle aux 18–40 ans comme à des partenaires, pas comme à des élèves.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="border-top:2px solid var(--bleu);padding-top:14px"><div class="syne" style="font-size:52px;line-height:1;color:var(--bleu);font-weight:800">27,7 %</div><div style="font-weight:600;margin-top:6px">de survie à 5 ans</div><div style="color:var(--orange-f);font-weight:600;font-size:15px">#onpeutmieuxfaire</div></div>
+        <div style="border-top:2px solid var(--bleu);padding-top:14px"><div class="syne" style="font-size:52px;line-height:1;color:var(--bleu);font-weight:800">6</div><div style="font-weight:600;margin-top:6px">campus visités</div><div style="color:var(--orange-f);font-weight:600;font-size:15px">#onvientchezvous</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
+        <div style="background:var(--blanc);border:1px solid var(--trait);padding:20px"><span class="ok" style="margin-bottom:10px">On dit</span><p style="font-size:16px;color:var(--nuit)">« Chaque étape compte. »<br>« Ton projet mérite un réseau. »<br>« Viens comme tu es, repars avec une équipe. »</p></div>
+        <div style="background:var(--blanc);border:1px solid var(--trait);padding:20px"><span class="ko" style="margin-bottom:10px">On évite</span><p style="font-size:16px">« Acteur incontournable de l'écosystème… »<br>Le jargon, les phrases de trois lignes, les promesses vides.</p></div>
+      </div>
+      <p class="small">Tutoiement ou vouvoiement : à décider par l'équipe. Les exemples tutoient.</p>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">13</span></div>
+</div>
+
+<!-- ================= 13. EN SITUATION : WEB ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">08 — En situation</span></div>
+  <div class="in" style="display:grid;grid-template-columns:1fr 300px;gap:48px">
+    <!-- Navigateur -->
+    <div style="background:var(--blanc);border:1px solid var(--trait);box-shadow:0 24px 48px rgba(11,26,58,.10);display:flex;flex-direction:column;overflow:hidden">
+      <div style="height:40px;background:#EFEAE1;display:flex;align-items:center;gap:8px;padding:0 16px"><i style="width:10px;height:10px;border-radius:50%;background:#D9D2C5"></i><i style="width:10px;height:10px;border-radius:50%;background:#D9D2C5"></i><i style="width:10px;height:10px;border-radius:50%;background:#D9D2C5"></i><span style="margin-left:16px;font-size:12px;color:var(--gris);background:#fff;padding:4px 12px">syneo.cm</span></div>
+      <div style="flex:1;background:var(--papier);position:relative;padding:28px 48px;overflow:hidden">
+        <svg class="ropes" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="wb" gradientUnits="userSpaceOnUse" x1="1000" y1="0" x2="760" y2="0"><stop offset="0" stop-color="#02449B" stop-opacity="0"/><stop offset="1" stop-color="#02449B"/></linearGradient>
+          <linearGradient id="wo" gradientUnits="userSpaceOnUse" x1="0" y1="640" x2="0" y2="440"><stop offset="0" stop-color="#FC4C02" stop-opacity="0"/><stop offset="1" stop-color="#FC4C02"/></linearGradient></defs>
+          <path d="M 1020 150 H 700 A 96 96 0 0 0 604 246 V 640" stroke="url(#wb)" style="stroke-width:22"/>
+          <path d="M 880 640 V 520 A 96 96 0 0 1 976 424 H 1020" stroke="url(#wo)" style="stroke-width:22"/>
+        </svg>
+        <div class="z" style="display:flex;justify-content:space-between;align-items:center">
+          <img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:56px">
+          <div style="display:flex;gap:28px;font-weight:600;font-size:15px;color:var(--bleu)"><span>prisme</span><span>conférences</span><span>vulgarisation</span><span>networking</span><span style="color:var(--orange-f)">rejoindre</span></div>
+        </div>
+        <div class="z" style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;margin-top:48px;align-items:start">
+          <div>
+            <span class="tag o">PRISME · 1re édition</span>
+            <div class="syne" style="font-size:56px;line-height:.98;color:var(--bleu);font-weight:800;letter-spacing:-.02em;margin:22px 0 18px">Seuls, on crée.<br><span style="color:var(--orange)">Ensemble,</span> on bâtit.</div>
+            <p style="font-size:16px;max-width:400px">Conférences, formation et incubation pour les jeunes porteurs de projet tech. Rendez-vous le <span style="background:linear-gradient(transparent 60%,var(--peche) 60%);color:var(--nuit);font-weight:600">18 novembre à l'ENSPY</span>.</p>
+            <div style="display:flex;align-items:flex-end;gap:12px;margin-top:28px"><a class="btn" href="#"><span class="arr"></span>je m'inscris</a><img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:96px"></div>
+          </div>
+          <div style="position:relative;height:340px">
+            <div class="ph" style="position:absolute;inset:0 0 40px 40px">[Photo : l'équipe SYNEO en conférence]<span class="corner-tab"></span></div>
+            <img class="px" src="../../assets/img/mascotte/confettis.svg" alt="" style="position:absolute;left:0;top:-24px;width:200px">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Téléphone -->
+    <div style="background:var(--nuit);padding:12px;border-radius:36px;display:flex">
+      <div style="flex:1;background:var(--papier);border-radius:26px;overflow:hidden;padding:20px 18px;display:flex;flex-direction:column;gap:14px;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center"><img src="../../assets/img/logo-syneo-transparent.png" alt="" style="height:36px"><div style="width:36px;height:36px;background:var(--bleu);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:9px"><i style="height:2px;background:#fff"></i><i style="height:2px;background:#fff"></i><i style="height:2px;background:#fff"></i></div></div>
+        <span class="tag o" style="align-self:flex-start;font-size:11px;padding:6px 10px">J-14</span>
+        <div class="syne" style="font-size:30px;line-height:1;color:var(--bleu);font-weight:800">Seuls, on crée. <span style="color:var(--orange)">Ensemble,</span> on bâtit.</div>
+        <p style="font-size:13px;line-height:1.5">Conférence inaugurale PRISME, le 18 novembre à l'ENSPY.</p>
+        <a class="btn sm" href="#" style="align-self:stretch;justify-content:center;font-size:15px"><span class="arr"></span>je m'inscris</a>
+        <img class="px" src="../../assets/img/mascotte/syn-salut.svg" alt="" style="height:90px;align-self:flex-end;margin-top:auto">
+        <img class="px" src="../../assets/img/mascotte/yaounde-bleu.svg" alt="" style="position:absolute;left:0;bottom:0;width:100%;opacity:.15">
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">12</span></div>
+</div>
+
+<!-- ================= 13. EN SITUATION : PRINT & SOCIAL ================= -->
+<div class="page">
+  <div class="run"><span class="cap"><b>SYNEO</b> · Livre de marque</span><span class="cap">08 — En situation</span></div>
+  <div class="in" style="display:grid;grid-template-columns:400px 1fr 360px;gap:40px;align-items:center">
+    <!-- Affiche A4 -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="aspect-ratio:1/1.414;background:var(--bleu);color:#fff;padding:32px;position:relative;overflow:hidden;box-shadow:0 24px 48px rgba(11,26,58,.18);display:flex;flex-direction:column">
+        <svg class="ropes" viewBox="0 0 400 566" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="ao" gradientUnits="userSpaceOnUse" x1="420" y1="0" x2="250" y2="0"><stop offset="0" stop-color="#FC4C02" stop-opacity="0"/><stop offset="1" stop-color="#FC4C02"/></linearGradient></defs>
+          <path d="M 420 250 H 330 A 64 64 0 0 0 266 314 V 600" stroke="url(#ao)" style="stroke-width:16"/>
+        </svg>
+        <span class="tag o z" style="align-self:flex-start">Conférence inaugurale</span>
+        <div class="syne z" style="font-size:50px;line-height:.9;font-weight:800;margin-top:28px">PRISME</div>
+        <div style="font-size:15px;color:#DCE6F7;margin-top:10px;line-height:1.5">Réseautage et innovation pour la synergie des modèles entrepreneuriaux</div>
+        <div class="syne" style="font-size:40px;line-height:1;margin-top:28px">18.11.26</div>
+        <div style="font-size:15px;margin-top:6px">10 h · ENSPY, Yaoundé</div>
+        <img class="px" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="position:absolute;right:18px;bottom:96px;width:170px">
+        <img class="px" src="../../assets/img/mascotte/yaounde-clair.svg" alt="" style="position:absolute;left:0;bottom:0;width:100%;opacity:.3">
+        <img src="../../assets/img/logo-syneo-transparent.png" alt="" style="position:absolute;left:32px;bottom:24px;height:44px;background:var(--papier);padding:6px">
+      </div>
+      <span class="small">Affiche A4 · événement</span>
+    </div>
+    <!-- Post + badge -->
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="aspect-ratio:1/1;background:var(--papier);border:1px solid var(--trait);padding:32px;position:relative;overflow:hidden;box-shadow:0 24px 48px rgba(11,26,58,.10)">
+          <div class="prog"><i></i><i></i><i></i><i></i></div>
+          <div class="syne" style="font-size:88px;line-height:.9;color:var(--bleu);font-weight:800;margin-top:28px">27,7 %</div>
+          <div class="syne" style="font-size:24px;line-height:1.15;color:var(--nuit);margin-top:12px;max-width:300px">des entreprises camerounaises passent le cap des 5 ans.</div>
+          <div style="color:var(--orange-f);font-weight:600;margin-top:12px">#onpeutmieuxfaire</div>
+          <img class="px" src="../../assets/img/mascotte/syn-escalier.svg" alt="" style="position:absolute;right:0;bottom:0;width:200px">
+          <span class="small" style="position:absolute;left:32px;bottom:20px">Source : CAMERCAP-PARC</span>
+        </div>
+        <span class="small">Post Instagram · carré</span>
+      </div>
+    </div>
+    <!-- Badge + carte -->
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="width:240px;align-self:center;background:var(--blanc);box-shadow:0 24px 48px rgba(11,26,58,.14);display:flex;flex-direction:column;overflow:hidden">
+          <div style="height:14px;background:var(--orange)"></div>
+          <div style="padding:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+            <img class="px" src="../../assets/img/mascotte/avatar.svg" alt="" style="width:56px">
+            <div class="syne" style="font-size:24px;color:var(--bleu);line-height:1.05">[Prénom<br>Nom]</div>
+            <span class="tag" style="font-size:12px;padding:6px 10px">Bâtisseur</span>
+          </div>
+          <div style="background:var(--bleu);padding:12px 22px;color:#fff;font-size:12px;display:flex;justify-content:space-between"><span>PRISME · 18.11.26</span><span>ENSPY</span></div>
+        </div>
+        <span class="small" style="text-align:center">Badge participant</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="aspect-ratio:85/55;background:var(--bleu);color:#fff;padding:20px;position:relative;overflow:hidden;box-shadow:0 24px 48px rgba(11,26,58,.14)">
+          <div class="syne" style="font-size:20px">Romuald AYOGO</div>
+          <div style="font-size:12px;color:#DCE6F7">Président fondateur</div>
+          <div style="font-size:11px;margin-top:14px;line-height:1.6;color:#DCE6F7">syneo3123@gmail.com<br>(+237) 657 30 04 79</div>
+          <img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="position:absolute;right:12px;bottom:12px;width:110px">
+        </div>
+        <span class="small">Carte de visite · 85 × 55 mm</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="prog"><i></i><i></i><i></i><i></i></div><span class="cap">13</span></div>
+</div>
+
+<!-- ================= 14. DOS ================= -->
+<div class="page" style="background:var(--bleu)">
+  <svg class="ropes" viewBox="0 0 1600 1000" aria-hidden="true">
+    <defs><linearGradient id="dw" gradientUnits="userSpaceOnUse" x1="1600" y1="0" x2="1100" y2="0"><stop offset="0" stop-color="#DCEBFF" stop-opacity="0"/><stop offset="1" stop-color="#DCEBFF" stop-opacity=".35"/></linearGradient>
+    <linearGradient id="do" gradientUnits="userSpaceOnUse" x1="0" y1="1000" x2="0" y2="760"><stop offset="0" stop-color="#FC4C02" stop-opacity="0"/><stop offset="1" stop-color="#FC4C02"/></linearGradient></defs>
+    <path d="M 1620 520 H 1300 A 120 120 0 0 0 1180 640 V 1040" stroke="url(#dw)"/>
+    <path d="M 980 1040 V 900 A 120 120 0 0 1 1100 780 H 1620" stroke="url(#do)"/>
+  </svg>
+  <div class="z" style="position:absolute;left:112px;top:120px;color:#fff;display:flex;flex-direction:column;gap:28px">
+    <div class="prog l"><i style="background:#fff"></i><i style="background:#C9D8F0"></i><i></i><i></i></div>
+    <div class="syne" style="font-size:80px;line-height:.95;font-weight:800;letter-spacing:-.02em">Connecter les talents,<br>construire le<br>développement.</div>
+    <div style="font-size:18px;color:#DCE6F7;line-height:1.7">SYNEO · Association pour la Synergie de l'Innovation, de l'Entrepreneuriat et des Opportunités<br>Yaoundé, Biteng · syneo3123@gmail.com</div>
+  </div>
+  <img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="position:absolute;left:1180px;top:560px;width:300px">
+  <img class="px" src="../../assets/img/mascotte/yaounde-clair.svg" alt="" style="position:absolute;left:0;bottom:0;width:100%;opacity:.25">
+</div>
+
+</body>
+</html>

@@ -242,9 +242,38 @@ def bouton():
     return s, "Bouton pixel"
 
 
+def yaounde(color, name):
+    """Silhouette pixel de Yaoundé : les collines, l'antenne du mont Fébé, quelques immeubles."""
+    W, H = 160, 30
+    s = Sprite(W, H)
+    hills = [(14, 9, 22), (40, 7, 18), (70, 12, 26), (100, 6, 20), (128, 10, 24), (152, 5, 16)]
+    for x in range(W):
+        top = H
+        for cx, h, r in hills:
+            d = abs(x - cx)
+            if d < r:
+                top = min(top, H - 1 - int(h * (1 - (d / r) ** 2)) - 6)
+        top = min(top, H - 6)
+        for y in range(top, H):
+            s.put(x, y, color, solid=False)
+    # antenne du mont Fébé sur la plus haute colline
+    for y in range(H - 28, H - 18):                       # mât fin
+        s.put(70, y, color, solid=False)
+    for y in range(H - 21, H - 17):                       # base plus large
+        s.put(69, y, color, solid=False); s.put(71, y, color, solid=False)
+    # immeubles du centre-ville
+    for x0, w, h in ((86, 4, 12), (91, 3, 16), (95, 5, 10), (108, 4, 14), (113, 3, 9)):
+        for x in range(x0, x0 + w):
+            for y in range(H - h, H):
+                s.put(x, y, color, solid=False)
+    return s, name
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     jobs = {
+        "yaounde-clair": yaounde("#FFFFFF", "Silhouette de Yaoundé"),
+        "yaounde-bleu": yaounde("#02449B", "Silhouette de Yaoundé"),
         "avatar": avatar(),
         "syn-salut": pose_salut(SYN, "Syn"),
         "neo-salut": pose_salut(NEO, "Néo"),
