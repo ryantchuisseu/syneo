@@ -392,5 +392,127 @@ JS = """
 out = out.replace("</body>", JS, 1)
 out = out.replace("@media (max-width:900px){.bits .bit:nth-child(n+5){display:none}}", "")
 
+# ---------------------------------------------------------------------------
+# Retours de revue : contraste, aération, profondeur, témoignages, FAQ, logos, micro-textes
+CSS5 = """
+/* Contraste et aération */
+.agenda .sec-head p,.agenda .more p,.tile span,.foot p,.legal,.ligne p{color:#EAF0FA!important}
+.tile span{font-size:15px}
+.stats{gap:24px}
+.st{padding:40px 30px 36px}
+.st b{margin-bottom:6px}
+.st span{margin-top:14px;font-size:16px}
+.st small{margin-top:12px;font-size:13px;opacity:.85}
+/* Profondeur : ombres douces, survol relevé */
+.c,.st,.tc,.tile,.pt,.prog-box{box-shadow:0 2px 0 rgba(11,26,58,.06),0 14px 30px -14px rgba(11,26,58,.28);transition:transform .2s steps(3),box-shadow .2s steps(3)}
+.st:hover,.pt:hover,.c:hover{transform:translateY(-4px);box-shadow:0 2px 0 rgba(11,26,58,.08),0 22px 38px -14px rgba(11,26,58,.38)}
+.agenda .tile{box-shadow:none;border:1px solid rgba(255,255,255,.14)}
+.agenda .tile:hover{border-color:rgba(255,255,255,.4)}
+/* Micro-textes sous les boutons */
+.cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.micro{font-size:13px;color:#EAF0FA;display:flex;align-items:center;gap:8px}
+.micro::before{content:"";width:8px;height:8px;background:var(--orange)}
+.ligne .micro{margin-top:14px}
+/* Témoignages */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+.q{position:relative;background:var(--creme);border-radius:30px;padding:56px 26px 26px;box-shadow:0 2px 0 rgba(11,26,58,.06),0 14px 30px -14px rgba(11,26,58,.28)}
+.q::before{content:"\\201C";position:absolute;left:22px;top:6px;font-family:Syne,sans-serif;font-weight:800;font-size:84px;line-height:1;color:var(--orange)}
+.q blockquote{margin:0;font-family:Syne,sans-serif;font-weight:600;font-size:19px;line-height:1.35;color:var(--nuit)}
+.q .who{display:flex;align-items:center;gap:12px;margin-top:22px;font-size:14px;line-height:1.35;color:var(--gris)}
+.q .who img{width:52px;height:52px;background:var(--ciel);border-radius:50%;image-rendering:pixelated;flex-shrink:0}
+.q .who b{display:block;color:var(--nuit);font-size:15px}
+.todo{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--peche);color:var(--nuit);padding:2px 8px;vertical-align:middle}
+/* Logos partenaires */
+.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:22px}
+.logo-slot{height:88px;border:2px dashed #9FB6DB;border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 14px;font-family:Syne,sans-serif;font-weight:700;font-size:15px;line-height:1.2;color:var(--bleu);background:rgba(255,255,255,.55)}
+.logo-note{margin:14px 0 0;font-size:13px;color:var(--gris)}
+/* FAQ */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--creme);border-radius:24px;padding:0 24px;box-shadow:0 2px 0 rgba(11,26,58,.06),0 14px 30px -14px rgba(11,26,58,.22)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-family:Syne,sans-serif;font-weight:700;font-size:19px;color:var(--bleu)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex-shrink:0;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--orange);color:#fff;font-size:22px;clip-path:var(--px);transition:transform .2s steps(3)}
+.faq details[open] summary::after{content:"\\2212"}
+.faq details p{margin:0;padding:0 0 22px;font-size:16px;line-height:1.6;color:var(--nuit)}
+.faq-side p{color:var(--gris);font-size:17px;line-height:1.6;margin:18px 0 22px}
+@media (max-width:900px){.quotes,.logos{grid-template-columns:1fr 1fr}.faq{grid-template-columns:1fr;gap:24px}}
+@media (max-width:600px){.quotes,.logos{grid-template-columns:1fr}.st{padding:30px 24px}}
+</style>"""
+out = out.replace("</style>", CSS5, 1)
+
+# Micro-textes (faits tirés des documents uniquement)
+out = out.replace('<a class="btn gold" href="#">Je m\'inscris</a>',
+                  '<div class="cta"><a class="btn gold" href="#">Je m\'inscris</a><small class="micro">Conférence inaugurale · 18 novembre · ENSPY</small></div>', 1)
+out = out.replace('<a class="btn" href="#">Rejoindre PRISME</a></div>',
+                  '<a class="btn" href="#">Rejoindre PRISME</a><small class="micro">500 à 1 000 participants attendus à la conférence inaugurale</small></div>', 1)
+
+# Témoignages : emplacements à remplir
+Q = """
+    <div class="quotes">
+      <figure class="q" style="margin:0"><blockquote>[Citation d'un participant, d'un étudiant ou d'un porteur de projet]</blockquote><figcaption class="who"><img src="../../assets/img/mascotte/avatar.svg" alt=""><span><b>[Prénom Nom]</b>[Rôle · établissement]<span class="todo">à recueillir</span></span></figcaption></figure>
+      <figure class="q" style="margin:0"><blockquote>[Citation d'un enseignant, d'un intervenant ou d'un mentor]</blockquote><figcaption class="who"><img src="../../assets/img/mascotte/avatar.svg" alt="" style="filter:hue-rotate(185deg) saturate(1.3)"><span><b>[Prénom Nom]</b>[Fonction · structure]<span class="todo">à recueillir</span></span></figcaption></figure>
+      <figure class="q" style="margin:0"><blockquote>[Citation d'un partenaire ou d'une institution]</blockquote><figcaption class="who"><img src="../../assets/img/mascotte/avatar.svg" alt="" style="filter:hue-rotate(30deg)"><span><b>[Prénom Nom]</b>[Fonction · organisation]<span class="todo">à recueillir</span></span></figcaption></figure>
+    </div>"""
+a = 'alt="Syn et Néo dans un espace de rencontre"></a>\n    </div>'
+assert a in out; out = out.replace(a, a + Q, 1)
+
+# Partenaires : cases pour les logos officiels
+LOGOS = """
+    <div class="logos">
+      <div class="logo-slot">MINPOSTEL</div><div class="logo-slot">Ministère de l'Enseignement Supérieur</div><div class="logo-slot">ESSTIC</div><div class="logo-slot">ENSPY</div>
+      <div class="logo-slot">Chaire UNESCO Accès TIC</div><div class="logo-slot">Programme AgroPole</div><div class="logo-slot">Néo Industry</div><div class="logo-slot">Bass Technology · IAC</div>
+      <div class="logo-slot">MY LAB Production</div><div class="logo-slot">CAMIGRA</div><div class="logo-slot">TIIANA</div><div class="logo-slot" style="border-style:solid">+ vos logos</div>
+    </div>
+    <p class="logo-note">Emplacements des logos officiels en monochrome, à fournir par chaque partenaire.</p>"""
+a = '<div class="pt"><strong>Production</strong><span>MY LAB Production<br>CAMIGRA<br>TIIANA</span></div>\n    </div>'
+assert a in out; out = out.replace(a, a + LOGOS, 1)
+
+# FAQ : réponses tirées des documents ; le reste est marqué « à confirmer »
+FAQ = """  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="faq">
+      <div class="faq-side"><span class="outline">Questions fréquentes</span><h2 style="margin:12px 0 0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,48px);line-height:1.05;letter-spacing:-.02em">Une question avant de te lancer ?</h2><p>Les réponses essentielles sur PRISME. Une autre question ? Écris-nous sur WhatsApp ou par e-mail.</p><a class="btn dark" href="mailto:syneo3123@gmail.com">Nous écrire</a></div>
+      <div class="faq-list">
+        <details open><summary>Qu'est-ce que PRISME ?</summary><p>Le Programme de Réseautage et d'Innovation pour la Synergie des Modèles Entrepreneuriaux : une plateforme nationale de sensibilisation, de formation, d'incubation et de mise en réseau. Sa première édition porte sur l'ingénierie logicielle et l'intelligence artificielle.</p></details>
+        <details><summary>Quand et où a lieu la conférence inaugurale ?</summary><p>Le 18 novembre 2026 à l'ENSPY, à Yaoundé, de 10 h à 13 h 30. Entre 500 et 1 000 participants sont attendus.</p></details>
+        <details><summary>Combien de conférences, et dans quelles écoles ?</summary><p>Six conférences thématiques, une par mois de janvier à juin 2027, chacune sur un site d'enseignement supérieur différent. Les campus hôtes (ENSPY, Université de Yaoundé I, SUP'PTIC, IAI-Cameroun, ESSTIC, NUMIATECH) sont suggérés et à confirmer.</p></details>
+        <details><summary>Qui peut suivre la formation et l'incubation ?</summary><p>Une cohorte de 40 à 60 porteurs de projet, de juillet à novembre 2027.</p></details>
+        <details><summary>Comment devenir partenaire ?</summary><p>Le dossier de sponsoring présente quatre niveaux de partenariat, de 5 à 30 millions de FCFA et plus. Écris-nous pour le recevoir.</p></details>
+        <details><summary>La participation est-elle payante ?<span class="todo">à confirmer</span></summary><p>Cette information ne figure pas dans les documents reçus. L'équipe SYNEO doit la confirmer avant la mise en ligne.</p></details>
+        <details><summary>Comment s'inscrire ?<span class="todo">à confirmer</span></summary><p>Le mode d'inscription (formulaire, WhatsApp, e-mail) reste à définir par l'équipe.</p></details>
+      </div>
+    </div>
+  </section>
+
+"""
+a = "  <!-- Ligne PRISME -->"
+assert a in out; out = out.replace(a, FAQ + a, 1)
+
+# ---------------------------------------------------------------------------
+# Corrections de mise en page après revue
+# 1) partenaires : un seul bloc, logos regroupés par catégorie
+a = out.index('<div class="partners">'); b = out.index('<p class="logo-note">')
+b = out.index('</p>', b) + 4
+GROUPS = """<div class="partners">
+      <div class="pt"><strong>Institutionnels</strong><div class="logos"><div class="logo-slot">MINPOSTEL</div><div class="logo-slot">Ministère de l'Enseignement Supérieur</div><div class="logo-slot">ESSTIC</div><div class="logo-slot">ENSPY</div></div></div>
+      <div class="pt"><strong>Techniques</strong><div class="logos"><div class="logo-slot">Chaire UNESCO Accès TIC</div><div class="logo-slot">Programme AgroPole</div><div class="logo-slot">Néo Industry</div><div class="logo-slot">Bass Technology · IAC</div></div></div>
+      <div class="pt"><strong>Production</strong><div class="logos"><div class="logo-slot">MY LAB Production</div><div class="logo-slot">CAMIGRA</div><div class="logo-slot">TIIANA</div><div class="logo-slot" style="border-style:solid">+ vos logos</div></div></div>
+    </div>
+    <p class="logo-note">Emplacements des logos officiels en monochrome, à fournir par chaque partenaire.</p>"""
+out = out[:a] + GROUPS + out[b:]
+out = out.replace("</style>", """
+.partners{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pt .logos{grid-template-columns:1fr 1fr;margin-top:6px}
+.pt .logo-slot{height:78px;font-size:14px}
+@media (max-width:900px){.partners{grid-template-columns:1fr}}
+/* micro-texte du bandeau à côté du bouton, pour ne pas toucher les personnages */
+.ligne .micro{display:inline-flex;margin:0 0 0 18px;vertical-align:middle;max-width:300px}
+</style>""", 1)
+# 2) les bits évitent aussi citations, logos et FAQ
+out = out.replace(".sec-head > *';", ".sec-head > *, .q, .logo-slot, .faq details, .logo-note, figure';")
+# 3) typographie : « ? » collé au mot
+out = out.replace("Une question avant de te lancer ?", "Une question avant de te lancer&nbsp;?")
+
 (D / "maquette-accueil-v2.html").write_text(out, encoding="utf-8")
 print("✓ docs/design/maquette-accueil-v2.html")
