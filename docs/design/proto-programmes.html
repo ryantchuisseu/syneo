@@ -12,9 +12,9 @@ body{margin:0;background:var(--papier);color:var(--nuit);font-family:'Instrument
 img.px{image-rendering:pixelated;display:block}
 
 /* ---------- Rideau de pixels ---------- */
-.curtain{position:relative;height:300px;overflow:visible;pointer-events:none}
+.curtain{position:fixed;top:0;left:0;right:0;height:150px;overflow:visible;pointer-events:none;z-index:5}
 .curtain i{position:absolute;display:block;will-change:transform,opacity}
-.intro{max-width:1240px;margin:0 auto;padding:40px 48px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.intro{max-width:1240px;margin:0 auto;padding:230px 48px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
 .intro h1{margin:0;font-family:Syne,sans-serif;font-weight:800;font-size:clamp(44px,6vw,84px);line-height:.95;letter-spacing:-.02em;color:var(--bleu)}
 .intro p{margin:16px 0 0;font-size:19px;line-height:1.6;color:var(--gris);max-width:560px}
 
@@ -39,7 +39,8 @@ img.px{image-rendering:pixelated;display:block}
   .row{grid-template-columns:1fr;gap:14px}
   .arrow{display:none}
   .mascot{display:none}
-  .curtain{height:180px}
+  .curtain{height:96px}
+  .intro{padding-top:150px}
 }
 </style>
 </head>
@@ -108,41 +109,41 @@ img.px{image-rendering:pixelated;display:block}
   function build() {
     el.innerHTML = ''; cells = [];
     const w = el.clientWidth;
-    size = w < 760 ? 16 : 24;
+    size = w < 760 ? 6 : 10;
     const cols = Math.ceil(w / size), rows = Math.floor(el.clientHeight / size);
     for (let c = 0; c < cols; c++) {
       // hauteur de chaque colonne : bord inférieur irrégulier
-      const h = Math.max(2, Math.round(rows * (0.45 + 0.35 * rand(c * 3.1) + 0.12 * Math.sin(c / 3))));
+      const h = Math.max(2, Math.round(rows * (0.42 + 0.22 * rand(c * 3.1) + 0.1 * Math.sin(c / 7))));
       for (let r = 0; r < h; r++) {
         const isEdge = r >= h - 2;
-        if (isEdge && rand(c * 17 + r) < 0.35) continue;              // pixels manquants sur le bord
+        if (isEdge && rand(c * 17 + r) < 0.45) continue;              // pixels manquants sur le bord
         const i = document.createElement('i');
         const fromBottom = (h - r) / h;                                // le bas part en premier
         const t = Math.min(.95, (1 - fromBottom) * .75 + rand(c * 7 + r * 13) * .25);
-        const col = r < h - 3 ? '#02449B' : colors[Math.floor(rand(c + r * 31) * colors.length)];
+        const col = r < h - 4 ? '#02449B' : colors[Math.floor(rand(c + r * 31) * colors.length)];
         i.style.cssText = `left:${c * size}px;top:${r * size}px;width:${size}px;height:${size}px;background:${col}`;
         el.appendChild(i);
-        cells.push({ i, t, dx: (rand(c * 5 + r) - .5) * 80, fall: 80 + rand(c + r * 7) * 160 });
+        cells.push({ i, t, dx: (rand(c * 5 + r) - .5) * 24, fall: 18 + rand(c + r * 7) * 46, rot: (rand(c * 11 + r) - .5) * 60 });
       }
     }
     // quelques confettis isolés sous le rideau
-    for (let k = 0; k < 26; k++) {
-      const i = document.createElement('i'); const s = size / 2;
-      i.style.cssText = `left:${rand(k * 9.7) * w}px;top:${el.clientHeight * (.55 + rand(k * 4.3) * .45)}px;width:${s}px;height:${s}px;background:${colors[k % colors.length]}`;
+    for (let k = 0; k < 18; k++) {
+      const i = document.createElement('i'); const s = Math.max(4, size * .6);
+      i.style.cssText = `left:${rand(k * 9.7) * w}px;top:${el.clientHeight * (.7 + rand(k * 4.3) * .3)}px;width:${s}px;height:${s}px;background:${colors[k % colors.length]}`;
       el.appendChild(i);
-      cells.push({ i, t: rand(k * 2.9) * .5, dx: (rand(k) - .5) * 60, fall: 120 });
+      cells.push({ i, t: rand(k * 2.9) * .4, dx: (rand(k) - .5) * 20, fall: 40, rot: 30 });
     }
     update();
   }
 
   function update() {
     if (reduce) return;
-    const p = Math.min(1, Math.max(0, window.scrollY / 520));       // 0 en haut, 1 après 520 px
+    const p = Math.min(1, Math.max(0, window.scrollY / 420));       // 0 en haut, 1 après 420 px
     for (const c of cells) {
-      const k = Math.min(1, Math.max(0, (p - c.t) / .3));
-      const e = k * k;                                                // accélère en tombant
-      c.i.style.transform = k ? `translate(${c.dx * e}px, ${c.fall * e}px) rotate(${e * 90}deg) scale(${1 - e * .5})` : '';
-      c.i.style.opacity = String(1 - k);
+      const k = Math.min(1, Math.max(0, (p - c.t * .8) / .45));
+      const e = k * k * (3 - 2 * k);                                  // départ et arrivée en douceur
+      c.i.style.transform = k ? `translate(${c.dx * e}px, ${c.fall * e}px) rotate(${c.rot * e}deg) scale(${1 - e * .35})` : '';
+      c.i.style.opacity = String(1 - e);
     }
   }
 
