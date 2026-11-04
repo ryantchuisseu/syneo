@@ -41,17 +41,18 @@ p{margin:0}
 
 /* ---------- La carte ---------- */
 .route{background:var(--nuit);color:#fff;position:relative;overflow:hidden;padding:56px 0 0}
+.note{font-size:13px;color:#9FB0CF;margin-top:10px}
 .route-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:8px}
 .route-head h2{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(22px,2.4vw,34px);text-transform:uppercase;letter-spacing:.02em;color:var(--or)}
 .legend{list-style:none;margin:14px 0 0;padding:0;font-size:15px;line-height:1.75;color:#C9D3E6;counter-reset:l}
 .legend li::before{counter-increment:l;content:"(" counter(l) ") ";color:var(--or);font-weight:700}
 .legend li.on{color:#fff}
-.map{position:relative;max-width:1200px;margin:0 auto;aspect-ratio:1200/2440}
+.map{position:relative;max-width:960px;margin:24px auto 0;aspect-ratio:1200/1520}
 .map svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .stars{position:absolute;inset:0;pointer-events:none}
-.stars i{position:absolute;width:5px;height:5px}
+.stars i{position:absolute;width:4px;height:4px}
 
-.stop{position:absolute;transform:translate(-50%,-50%);width:4.4%;aspect-ratio:1;z-index:3}
+.stop{position:absolute;transform:translate(-50%,-50%);width:4%;aspect-ratio:1;z-index:3}
 .stop b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--or);color:var(--nuit);font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:clamp(15px,1.7vw,24px);transition:background .3s ease,color .3s ease,transform .3s ease;
   clip-path:polygon(0 8px,8px 8px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 8px),0 calc(100% - 8px))}
 .stop.on b{background:var(--orange);color:#fff;transform:scale(1.12)}
@@ -118,7 +119,7 @@ p{margin:0}
       <p class="crumb"><a href="maquette-accueil.html">Accueil</a> / Conférences</p>
       <h1>La route<br><em>PRISME</em>.</h1>
     </div>
-    <p>Sept étapes, six campus, une saison. De la conférence inaugurale à l'ENSPY jusqu'à NUMIATECH, PRISME vient chez vous. Descends la page et suis le point orange : il t'emmène d'une étape à l'autre.</p>
+    <p>Une conférence inaugurale, puis six conférences thématiques itinérantes, chacune sur un site d'enseignement supérieur différent. Descends la page et suis le point orange d'une étape à l'autre.</p>
   </div>
 </section>
 
@@ -127,14 +128,15 @@ p{margin:0}
     <div>
       <h2 id="route-titre">La route des campus</h2>
       <ol class="legend" id="legend">
-        <li>ENSPY · conférence inaugurale</li>
-        <li>ENSPY · comprendre</li>
-        <li>Université de Yaoundé I · construire</li>
-        <li>SUP'PTIC · appliquer</li>
-        <li>IAI-Cameroun · produire</li>
-        <li>ESSTIC · monétiser</li>
-        <li>NUMIATECH · entreprendre</li>
+        <li>Conférence inaugurale · ENSPY</li>
+        <li>Compréhension · ENSPY</li>
+        <li>Construction · Université de Yaoundé I</li>
+        <li>Application · SUP'PTIC</li>
+        <li>Production · IAI-Cameroun</li>
+        <li>Modèles économiques · ESSTIC</li>
+        <li>Entrepreneuriat &amp; Écosystème · NUMIATECH</li>
       </ol>
+      <p class="note">Conférences thématiques : une par mois, de janvier à juin 2027. Campus hôtes suggérés, à confirmer.</p>
     </div>
     <h2 style="text-align:right">Saison 1<br><span style="color:#fff;font-size:.6em">nov. 2026 → juin 2027</span></h2>
   </div>
@@ -142,12 +144,12 @@ p{margin:0}
   <!-- Carte : grand écran -->
   <div class="map" id="map">
     <div class="stars" id="stars" aria-hidden="true"></div>
-    <svg viewBox="0 0 1200 2440" aria-hidden="true">
+    <svg viewBox="0 0 1200 1520" aria-hidden="true">
       <defs>
         <filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <path id="road" d="" fill="none" stroke="#FBF8F3" stroke-opacity=".9" stroke-width="20" stroke-linecap="square"/>
-      <path id="done" d="" fill="none" stroke="#FC4C02" stroke-width="20" stroke-linecap="square"/>
+      <path id="road" d="" fill="none" stroke="#FBF8F3" stroke-opacity=".9" stroke-width="16" stroke-linecap="square"/>
+      <path id="done" d="" fill="none" stroke="#FC4C02" stroke-width="16" stroke-linecap="square"/>
       <g id="leaders" stroke="#FBF8F3" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="square" fill="none" opacity=".85"></g>
       <g id="runner" filter="url(#glow)">
         <rect x="-26" y="-26" width="52" height="52" fill="#FC4C02" opacity=".25"><animate attributeName="opacity" values=".35;.08;.35" dur="1.6s" repeatCount="indefinite"/></rect>
@@ -156,7 +158,7 @@ p{margin:0}
       </g>
     </svg>
     <div id="pins"></div>
-    <div class="finish" style="left:50%;top:96.4%"><div class="flag"></div><strong>Forum National</strong><span>Décembre 2027 · clôture de la saison</span></div>
+    <div class="finish" style="left:55%;top:95.6%"><div class="flag"></div><strong>Forum National</strong><span>Décembre 2027</span></div>
   </div>
 
   <!-- Frise : mobile -->
@@ -169,17 +171,18 @@ p{margin:0}
 <script>
 /* Données des étapes */
 const STOPS = [
-  {n:1, date:'18 nov. 2026', title:'Conférence inaugurale', place:'ENSPY · 10 h – 13 h 30', img:'inaugurale', y:300},
-  {n:2, date:'Janvier 2027', title:'Comprendre', place:'ENSPY (pressenti)', img:'enspy', y:620},
-  {n:3, date:'Février 2027', title:'Construire', place:'Université de Yaoundé I', img:'uy1', y:940},
-  {n:4, date:'Mars 2027', title:'Appliquer', place:"SUP'PTIC", img:'supptic', y:1260},
-  {n:5, date:'Avril 2027', title:'Produire', place:'IAI-Cameroun', img:'iai', y:1580},
-  {n:6, date:'Mai 2027', title:'Monétiser', place:'ESSTIC', img:'esstic', y:1900},
-  {n:7, date:'Juin 2027', title:'Entreprendre', place:'NUMIATECH', img:'numiatech', y:2200},
+  {n:1, date:'18 novembre 2026', title:'Conférence inaugurale', place:'ENSPY · 10 h – 13 h 30', img:'inaugurale', y:175},
+  {n:2, date:'Conférence 1', title:'Compréhension', place:'ENSPY · campus suggéré', img:'enspy', y:370},
+  {n:3, date:'Conférence 2', title:'Construction', place:'Université de Yaoundé I · campus suggéré', img:'uy1', y:590},
+  {n:4, date:'Conférence 3', title:'Application', place:"SUP'PTIC · campus suggéré", img:'supptic', y:790},
+  {n:5, date:'Conférence 4', title:'Production', place:'IAI-Cameroun · campus suggéré', img:'iai', y:980},
+  {n:6, date:'Conférence 5', title:'Modèles économiques', place:'ESSTIC · campus suggéré', img:'esstic', y:1170},
+  {n:7, date:'Conférence 6', title:'Entrepreneuriat & Écosystème', place:'NUMIATECH · campus suggéré', img:'numiatech', y:1370},
 ];
 /* Tracé : segments verticaux reliés par des virages à angle droit arrondis */
-const WAY = [[600,40],[600,180],[440,180],[440,460],[760,460],[760,780],[440,780],[440,1100],[780,1100],[780,1420],[420,1420],[420,1740],[760,1740],[760,2060],[600,2060],[600,2340]];
-const R = 44;
+const WAY = [[600,40],[600,100],[650,100],[650,250],[470,250],[470,300],[430,300],[430,440],[700,440],[700,520],[740,520],[740,660],[520,660],[520,720],[470,720],[470,860],[650,860],[650,900],[720,900],[720,1060],[560,1060],[560,1100],[480,1100],[480,1240],[620,1240],[620,1300],[660,1300],[660,1450]];
+const VBH = 1520;
+const R = 22;
 
 function roundedPath(pts, r) {
   let d = `M ${pts[0][0]} ${pts[0][1]}`;
@@ -238,10 +241,10 @@ function xAtY(y) {
     const yOff = (i % 2 ? -36 : 36);
     leaders.insertAdjacentHTML('beforeend', `<path d="M ${s.x + (left ? -30 : 30)} ${s.y} H ${midX} V ${s.y + yOff} H ${edge}"/>`);
     const stop = document.createElement('div');
-    stop.className = 'stop'; stop.style.left = (s.x / 12) + '%'; stop.style.top = (s.y / 24.4) + '%';
+    stop.className = 'stop'; stop.style.left = (s.x / 12) + '%'; stop.style.top = (s.y / VBH * 100) + '%';
     stop.innerHTML = `<b>${s.n}</b>`;
     pins.appendChild(stop); s.stop = stop;
-    const card = `<a class="polaroid" href="#" style="--r:${left ? -2.5 : 2.5}deg;left:${cardX/12}%;top:${(s.y + yOff)/24.4}%">
+    const card = `<a class="polaroid" href="#" style="--r:${left ? -2.5 : 2.5}deg;left:${cardX/12}%;top:${(s.y + yOff) / VBH * 100}%">
         <span class="tape"></span><img class="px" src="../../assets/img/campus/${s.img}.png" alt="${s.place}, illustration pixel">
         <span class="cap"><small>${s.date}</small><strong>${s.title}</strong><span>${s.place}</span></span></a>`;
     pins.insertAdjacentHTML('beforeend', card);
@@ -256,7 +259,7 @@ function xAtY(y) {
   function update() {
     if (getComputedStyle(map).display === 'none') return updateMobile();
     const box = map.getBoundingClientRect();
-    const target = ((innerHeight * .55) - box.top) / box.height * 2440;           // le point suit le milieu de l'écran
+    const target = ((innerHeight * .55) - box.top) / box.height * VBH;           // le point suit le milieu de l'écran
     const len = reduce ? L : Math.max(0, Math.min(L, lenAtY(target)));
     const p = road.getPointAtLength(len);
     runner.setAttribute('transform', `translate(${p.x} ${p.y})`);
