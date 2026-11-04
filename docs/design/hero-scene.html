@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SYNEO — haut de page avec scène pixel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+<style>
+:root{--bleu:#02449B;--orange:#FC4C02;--nuit:#0B1A3A;--gris:#3E4A66}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF1F6;font-family:'Instrument Sans',system-ui,sans-serif;color:var(--nuit)}
+.frame{width:1440px;margin:0 auto}
+.hero{position:relative;width:1440px;height:840px;overflow:hidden;
+  background:url(../../assets/img/scenes/lac-yaounde.png) center bottom / 1440px 840px no-repeat;image-rendering:pixelated}
+nav{position:absolute;left:56px;right:56px;top:28px;display:flex;align-items:center;justify-content:space-between}
+nav img{height:52px;image-rendering:auto}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:36px;font-weight:600;font-size:16px}
+nav a{color:var(--bleu);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;background:var(--orange);color:#fff;font-family:Syne,sans-serif;font-weight:700;font-size:19px;text-decoration:none;
+  clip-path:polygon(0 16px,8px 16px,8px 8px,16px 8px,16px 0,calc(100% - 16px) 0,calc(100% - 16px) 8px,calc(100% - 8px) 8px,calc(100% - 8px) 16px,100% 16px,100% calc(100% - 16px),calc(100% - 8px) calc(100% - 16px),calc(100% - 8px) calc(100% - 8px),calc(100% - 16px) calc(100% - 8px),calc(100% - 16px) 100%,16px 100%,16px calc(100% - 8px),8px calc(100% - 8px),8px calc(100% - 16px),0 calc(100% - 16px))}
+.btn.ghost{background:rgba(251,248,243,.92);color:var(--bleu)}
+.btn.sm{height:46px;padding:0 20px;font-size:16px}
+.center{position:absolute;left:0;right:0;top:118px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
+h1{margin:0;font-family:Syne,sans-serif;font-weight:800;font-size:64px;line-height:1;letter-spacing:-.02em;color:var(--bleu)}
+h1 span{color:var(--orange)}
+p{margin:0;max-width:600px;font-size:19px;line-height:1.55;color:var(--gris)}
+.tag{display:inline-block;background:var(--bleu);color:#fff;font-weight:600;font-size:14px;padding:8px 14px;position:relative;margin-right:8px}
+.tag::before{content:"";position:absolute;right:-8px;top:-8px;width:8px;height:8px;background:var(--bleu)}
+.tag::after{content:"";position:absolute;right:-8px;top:0;width:8px;height:8px;background:var(--bleu)}
+.row{display:flex;gap:14px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="frame">
+  <section class="hero" aria-label="Accueil SYNEO : Syn et Néo au bord du lac municipal de Yaoundé">
+    <nav>
+      <img src="../../assets/img/logo-syneo-transparent.png" alt="SYNEO">
+      <ul><li><a href="#">prisme</a></li><li><a href="#">conférences</a></li><li><a href="#">vulgarisation</a></li><li><a href="#">networking</a></li><li><a href="#">à propos</a></li></ul>
+      <a class="btn sm" href="#">rejoindre</a>
+    </nav>
+    <div class="center">
+      <span class="tag">PRISME · conférence inaugurale le 18 novembre</span>
+      <h1>Seuls, on crée.<br><span>Ensemble,</span> on bâtit.</h1>
+      <p>Conférences, formation et réseau pour les jeunes porteurs de projet tech au Cameroun.</p>
+      <div class="row">
+        <a class="btn" href="#">je m'inscris →</a>
+        <a class="btn ghost" href="#">découvrir prisme</a>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
