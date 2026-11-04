@@ -301,5 +301,48 @@ out = out.replace("  <!-- Chiffres -->\n  <section class=\"sec\">", "  <!-- Chif
 out = out.replace("  <!-- Programme PRISME -->\n  <section class=\"sec\" id=\"programme\">", "  <!-- Programme PRISME -->\n  <section class=\"sec\" id=\"programme\">" + deco("etincelle-or", "left:46%;top:60px;width:39px;opacity:1") + deco("tuyau", "right:-10px;top:520px;width:160px"), 1)
 out = out.replace('<div class="agenda">', '<div class="agenda">' + deco("engrenage-clair", "right:-30px;bottom:-30px;width:180px;opacity:.12") + deco("croix-or", "right:42%;top:36px;width:27px;opacity:1"), 1)
 
+# ---------------------------------------------------------------------------
+# Bits visibles sur les zones claires (7 à 9 par zone), à la place du grain fin
+import random as _r
+
+
+def bits(seed, n=8):
+    rnd = _r.Random(seed)
+    cols = ["#02449B", "#02449B", "#FC4C02", "#F2B233", "#2E6FD3"]
+    shapes = [[(0, 0)], [(0, 0)], [(0, 0), (1, 0)], [(0, 0), (0, 1)], [(0, 0), (1, 1)], [(0, 0), (1, 0), (1, 1)]]
+    out = []
+    for k in range(n):
+        side = rnd.random()
+        # uniquement dans les marges latérales, ou dans l'espace vide au-dessus du contenu
+        x = rnd.uniform(-2.2, .8) if side < .45 else rnd.uniform(98.6, 101.4) if side < .9 else rnd.uniform(35, 65)
+        y = rnd.uniform(6, 94) if side < .9 else rnd.uniform(1, 4)
+        u = rnd.choice((8, 8, 10, 12))
+        c = rnd.choice(cols)
+        cells = rnd.choice(shapes)
+        sh = ",".join(f"{dx * u}px {dy * u}px 0 {c}" for dx, dy in cells[1:])
+        blink = ' blink' if rnd.random() < .35 else ''
+        delay = f"animation-delay:{rnd.uniform(0, 2.4):.1f}s;" if blink else ""
+        out.append(f'<i class="bit{blink}" style="left:{x:.1f}%;top:{y:.1f}%;width:{u}px;height:{u}px;background:{c};{"box-shadow:" + sh + ";" if sh else ""}{delay}"></i>')
+    return '<div class="bits" aria-hidden="true">' + "".join(out) + "</div>"
+
+
+CSS3 = """
+/* Bits tech visibles sur les zones claires (remplacent le grain fin) */
+body::after{display:none}
+.bits{position:absolute;inset:0;pointer-events:none;z-index:0}
+.bit{position:absolute;display:block}
+.bit.blink{animation:led 3.2s steps(1) infinite}
+@keyframes led{0%,70%{opacity:1}71%,85%{opacity:.15}86%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bit.blink{animation:none}}
+@media (max-width:900px){.bits .bit:nth-child(n+5){display:none}}
+</style>"""
+out = out.replace("</style>", CSS3, 1)
+zones = [('<section class="mission">', 11, 7), ('  <section class="cards">', 12, 7),
+         ('  <!-- Chiffres -->\n  <section class="sec">', 13, 8), ('<section class="sec" id="programme">', 14, 9),
+         ('<section class="sec" id="tribune">', 15, 8), ('<div class="band peche">', 16, 7)]
+for marker, seed, n in zones:
+    assert marker in out, marker
+    out = out.replace(marker, marker + bits(seed, n), 1)
+
 (D / "maquette-accueil-v2.html").write_text(out, encoding="utf-8")
 print("✓ docs/design/maquette-accueil-v2.html")
