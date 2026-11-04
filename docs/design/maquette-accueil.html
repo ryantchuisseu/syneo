@@ -263,6 +263,12 @@ footer p{color:#DCE6F7;font-size:16px}
   .wa span{display:none}.wa{padding:8px}
   .nav .btn.sm{display:none}
 }
+
+/* Surlignage au marqueur : se dessine quand le texte entre à l'écran */
+.hl{background-image:linear-gradient(transparent 14%,var(--hl,#FFE08A) 14%,var(--hl,#FFE08A) 90%,transparent 90%);background-repeat:no-repeat;background-size:0% 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .2em;margin:0 -.1em;color:var(--nuit);transition:background-size .9s cubic-bezier(.6,.1,.3,1)}
+.hl.in{background-size:100% 100%}
+.hl.on-dark{--hl:#F2B233;color:var(--nuit)}
+@media (prefers-reduced-motion:reduce){.hl{background-size:100% 100%;transition:none}}
 </style>
 </head>
 <body>
@@ -294,7 +300,7 @@ footer p{color:#DCE6F7;font-size:16px}
     <div class="txt">
       <span class="tag o">PRISME · conférence inaugurale le 18 novembre à l'ENSPY</span>
       <h1>Seuls, on crée.<br><em>Ensemble,</em> on bâtit.</h1>
-      <p class="lead">SYNEO connecte les jeunes porteurs de projet, les écoles, les entreprises et les institutions pour faire émerger les solutions tech de demain au Cameroun.</p>
+      <p class="lead">SYNEO connecte les jeunes porteurs de projet, les écoles, les entreprises et les institutions pour <span class="hl">faire émerger les solutions tech de demain</span> au Cameroun.</p>
       <div class="ctas">
         <a class="btn" href="#agenda"><span class="arr"></span>je m'inscris</a>
         <a class="btn ghost" href="#programme">découvrir PRISME</a>
@@ -332,7 +338,7 @@ footer p{color:#DCE6F7;font-size:16px}
   <div class="wrap">
     <div class="head">
       <div><span class="cap">Ce que fait SYNEO</span><h2>Sensibiliser, former,<br>connecter, raconter.</h2></div>
-      <p class="lead" style="max-width:440px">Des séminaires, des formations et des événements pour équiper les porteurs de projet autour de l'entrepreneuriat et de l'innovation.</p>
+      <p class="lead" style="max-width:440px">Des séminaires, des formations et des événements pour <span class="hl">équiper les porteurs de projet</span> autour de l'entrepreneuriat et de l'innovation.</p>
     </div>
     <div class="pillars">
       <a class="pillar" href="#"><div class="ill"><img class="px" src="../../assets/img/mascotte/syn-idee.svg" alt=""></div><h3>Vulgarisation</h3><p>IA, géospatial, cybersécurité, données : comprendre les technologies et les adapter au contexte camerounais.</p><span class="more"><span class="arr"></span>explorer</span></a>
@@ -348,7 +354,7 @@ footer p{color:#DCE6F7;font-size:16px}
   <div class="wrap">
     <div class="head">
       <div><span class="tag g">PRISME · 1re édition · Logiciel &amp; IA</span><h2>Chaque étape compte.</h2></div>
-      <p class="lead" style="max-width:440px">Treize mois, sept composantes, un fil rouge : faire de chaque jeune talent un bâtisseur de l'écosystème.</p>
+      <p class="lead" style="max-width:440px">Treize mois, sept composantes, un fil rouge : <span class="hl">faire de chaque jeune talent un bâtisseur</span> de l'écosystème.</p>
     </div>
     <div class="list">
       <a class="row" href="#"><span class="tag">Lancement · 18.11.2026</span><h3>Conférence inaugurale</h3><img class="px mascot" src="../../assets/img/mascotte/neo-micro.svg" alt="" style="height:116px"><span class="big-arr" aria-hidden="true"></span><p class="desc">À l'<u>ENSPY</u>, de 10 h à 13 h 30 : lancement officiel, panel et premier tournage de la série documentaire.</p></a>
@@ -365,7 +371,7 @@ footer p{color:#DCE6F7;font-size:16px}
   <div class="wrap">
     <div class="head">
       <div><span class="cap">Agenda</span><h2>Six campus, une saison.</h2></div>
-      <p class="lead" style="max-width:440px">Chaque mois, PRISME s'installe dans une école différente. Les cinq filières avancent ensemble, d'étape en étape.</p>
+      <p class="lead" style="max-width:440px"><span class="hl on-dark">Chaque mois, PRISME s'installe dans une école différente.</span> Les cinq filières avancent ensemble, d'étape en étape.</p>
     </div>
     <div class="events">
       <a class="ev featured" href="#"><span class="st">Lancement</span><div class="d"><b>18</b><span>nov.<br>2026</span></div><h3>Conférence inaugurale</h3><p>ENSPY, Yaoundé · 10 h</p></a>
@@ -390,7 +396,7 @@ footer p{color:#DCE6F7;font-size:16px}
     <div>
       <span class="cap">Série documentaire</span>
       <h2>PRISME :<br>Les Bâtisseurs</h2>
-      <p>Une série immersive qui suit, toute l'année, celles et ceux qui bâtissent l'écosystème tech camerounais. Diffusion sur la CRTV et les médias partenaires.</p>
+      <p>Une série immersive qui suit, toute l'année, <span class="hl on-dark">celles et ceux qui bâtissent l'écosystème tech camerounais</span>. Diffusion sur la CRTV et les médias partenaires.</p>
       <div class="ep"><div><b>24</b><span>épisodes</span></div><div><b>1</b><span>film de clôture</span></div><div><b>18.11</b><span>premier clap</span></div></div>
     </div>
   </div>
@@ -401,7 +407,7 @@ footer p{color:#DCE6F7;font-size:16px}
   <div class="wrap">
     <div class="head">
       <div><span class="cap">La tribune</span><h2>La parole aux bâtisseurs.</h2></div>
-      <p class="lead" style="max-width:440px">Trois façons de prendre la parole. Les membres publient, l'équipe SYNEO relit et vérifie chaque contenu avant la mise en ligne.</p>
+      <p class="lead" style="max-width:440px">Trois façons de prendre la parole. Les membres publient, <span class="hl">l'équipe SYNEO relit et vérifie chaque contenu</span> avant la mise en ligne.</p>
     </div>
     <div class="cards">
       <a class="card" href="#">
@@ -598,6 +604,16 @@ footer p{color:#DCE6F7;font-size:16px}
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); } }, { passive: true });
   addEventListener('resize', build);
   build();
+})();
+</script>
+
+<script>
+/* Surlignages : le trait de marqueur se dessine à l'apparition */
+(function () {
+  const els = document.querySelectorAll('.hl');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
+  els.forEach(e => io.observe(e));
 })();
 </script>
 </body>
