@@ -514,5 +514,113 @@ out = out.replace(".sec-head > *';", ".sec-head > *, .q, .logo-slot, .faq detail
 # 3) typographie : « ? » collé au mot
 out = out.replace("Une question avant de te lancer ?", "Une question avant de te lancer&nbsp;?")
 
+# ---------------------------------------------------------------------------
+# Deuxième revue : typographie, micro-relief, arrondis stricts, lueurs, séparateurs, CTA
+import re as _re
+
+CSS6 = """
+/* rangée du haut de page : boutons et chiffres sur une seule ligne */
+.hero .row{gap:22px;flex-wrap:nowrap;align-items:flex-start}
+.hero .stat b{font-size:26px;white-space:nowrap}
+.hero .stat span{max-width:128px;font-size:12.5px;line-height:1.45}
+.hero .micro{max-width:178px;font-size:12px;line-height:1.4;align-items:flex-start}
+.hero .micro::before{margin-top:5px;flex-shrink:0}
+@media (max-width:900px){.hero .row{flex-wrap:wrap}.hero .micro{max-width:none}}
+/* ---- Hiérarchie typographique : titres 800, textes 400, interlignes aérés ---- */
+body{font-weight:400;line-height:1.7}
+h1,h2,h3,.sec-head h2,.prow h3,.tc h3,.tile b,.agenda h2,.mission h2,.faq summary{font-weight:700}
+.st b,.tile .big{font-weight:800}
+.prow .desc{font-weight:400;font-size:18px;line-height:1.75}
+.prow .desc u,.sec-head p .hl,p strong{font-weight:600}
+.c p,.tc p,.st span,.tile span,.faq details p,.sec-head p,.faq-side p,.logo-note,.micro{line-height:1.75;font-weight:400}
+.c p,.tc p{font-size:16px}
+.st small{line-height:1.5}
+.q blockquote{font-weight:700;line-height:1.5}
+.sec-head p{font-size:18px}
+
+/* ---- Micro-relief : dégradés légers + filet lumineux ---- */
+.c.o{background:linear-gradient(155deg,#F07A45 0%,#E2622A 55%,#D9561F 100%)}
+.c.b{background:linear-gradient(155deg,#0B5BC9 0%,#02449B 60%,#013A85 100%)}
+.c.g{background:linear-gradient(155deg,#F1F7FF,#DCEBFF)}
+.st:nth-child(1){background:linear-gradient(155deg,#FFFFFF,#F4EDE3)}
+.st:nth-child(2){background:linear-gradient(155deg,#EEF5FF,#DCEBFF)}
+.st:nth-child(3){background:linear-gradient(155deg,#F07A45,#E2622A)}
+.st:nth-child(4){background:linear-gradient(155deg,#0B5BC9,#02449B)}
+.tc,.q,.faq details,.prog-box{background:linear-gradient(155deg,#FFFFFF,#F7F1E8)}
+.tc.hot,.tile.hot{background:linear-gradient(155deg,#FF6A21,#FC4C02 55%,#E04300)}
+.agenda .tile:not(.hot){background:linear-gradient(155deg,#1B3C72,#14305F)}
+.tc,.q,.faq details,.prog-box,.st:nth-child(1),.st:nth-child(2),.c.g,.pt{box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.6),0 2px 0 rgba(11,26,58,.06),0 14px 30px -14px rgba(11,26,58,.28)}
+.c.o,.c.b,.st:nth-child(3),.st:nth-child(4),.tc.hot{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.2),0 2px 0 rgba(11,26,58,.08),0 18px 34px -14px rgba(11,26,58,.4)}
+.agenda .tile{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 0 0 1px rgba(255,255,255,.1)}
+.agenda .tile.hot{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.25),0 16px 34px -12px rgba(252,76,2,.6)}
+
+/* ---- Lueurs d'ambiance ---- */
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(closest-side at 74% 52%,rgba(46,111,211,.55),rgba(46,111,211,0) 70%),
+  radial-gradient(closest-side at 90% 20%,rgba(255,138,61,.28),rgba(255,138,61,0) 70%),
+  radial-gradient(closest-side at 14% 44%,rgba(252,76,2,.2),rgba(252,76,2,0) 70%)}
+.agenda::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(closest-side at 12% 8%,rgba(255,138,61,.22),rgba(255,138,61,0) 70%),
+  radial-gradient(closest-side at 92% 100%,rgba(46,111,211,.5),rgba(46,111,211,0) 70%)}
+.ligne::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;background:
+  radial-gradient(closest-side at 77% 26%,rgba(255,138,61,.5),rgba(255,138,61,0) 60%),
+  radial-gradient(closest-side at 20% 85%,rgba(46,111,211,.45),rgba(46,111,211,0) 70%)}
+.foot::before{content:"";position:absolute;left:0;right:0;top:120px;height:220px;pointer-events:none;background:radial-gradient(closest-side at 80% 0,rgba(255,138,61,.28),rgba(255,138,61,0) 70%)}
+/* ombres colorées sous les dessins : effet de lévitation */
+.scene{filter:drop-shadow(0 22px 26px rgba(46,111,211,.45))}
+.c.o img.vig{filter:drop-shadow(0 10px 8px rgba(120,40,0,.4))}
+.c.g img.vig,.c.b img.vig{filter:drop-shadow(0 10px 8px rgba(2,40,110,.4))}
+.prow .mas{filter:drop-shadow(0 12px 10px rgba(2,68,155,.3));animation:float 4.2s steps(4) infinite}
+.prow:nth-child(even) .mas{animation-delay:1.1s}
+.tc img{filter:drop-shadow(0 10px 10px rgba(11,26,58,.25))}
+@keyframes float{50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.prow .mas{animation:none}}
+
+/* ---- Séparateurs en dégradé de lumière ---- */
+.prow{border-bottom:0;background:linear-gradient(90deg,rgba(11,26,58,0),rgba(11,26,58,.7) 14%,rgba(11,26,58,.7) 86%,rgba(11,26,58,0)) bottom/100% 2px no-repeat}
+.prow:last-child{background:none}
+.divider{height:3px;margin:84px 20px 0;background:linear-gradient(90deg,rgba(252,76,2,0),#FC4C02 22%,#2E6FD3 78%,rgba(46,111,211,0));opacity:.55;position:relative}
+.divider::after{content:"";position:absolute;left:50%;top:-5px;width:12px;height:12px;margin-left:-6px;background:var(--orange);box-shadow:0 0 14px 3px rgba(252,76,2,.6)}
+.legal{position:relative;border-top:0}
+.legal::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,138,61,.9),rgba(255,255,255,.6),rgba(255,255,255,0))}
+@media (max-width:900px){.divider{margin:56px 0 0}}
+
+/* ---- Boutons : lueur + flèche animée ---- */
+.glow{display:inline-block;filter:drop-shadow(0 6px 16px rgba(252,76,2,.5));transition:filter .2s steps(3)}
+.glow.b{filter:drop-shadow(0 6px 16px rgba(2,68,155,.45))}
+.glow:hover{filter:drop-shadow(0 8px 22px rgba(252,76,2,.75))}
+.glow.b:hover{filter:drop-shadow(0 8px 22px rgba(46,111,211,.7))}
+.btn::after{content:"";flex-shrink:0;width:18px;height:12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 5h13v2H0zM11 1h2v2h2v2h-2V3h-2zM11 11h2V9h2V7h-2v2h-2z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 5h13v2H0zM11 1h2v2h2v2h-2V3h-2zM11 11h2V9h2V7h-2v2h-2z'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s steps(3)}
+.btn:hover::after{transform:translateX(5px)}
+.btn.sm::after{width:14px;height:10px}
+@media (prefers-reduced-motion:reduce){.btn:hover::after{transform:none}}
+</style>"""
+out = out.replace("</style>", CSS6, 1)
+
+# boutons : enveloppe « glow » (bleu pour les boutons sombres)
+def _wrap(m):
+    cls = "glow b" if ("dark" in m.group(0).split('>')[0]) else "glow"
+    return f'<span class="{cls}">{m.group(0)}</span>'
+out = _re.sub(r'<a class="btn[^"]*"[^>]*>.*?</a>', _wrap, out, flags=_re.S)
+
+# séparateurs entre grandes sections
+out = out.replace("  <!-- Programme PRISME -->", '  <div class="divider" aria-hidden="true"></div>\n  <!-- Programme PRISME -->', 1)
+out = out.replace("  <!-- FAQ -->", '  <div class="divider" aria-hidden="true"></div>\n  <!-- FAQ -->', 1)
+
+# arrondis : grille stricte 16 / 24 / 40
+def _r(v):
+    n = int(v)
+    if n >= 100 or n <= 12: return f"{n}px"
+    if n <= 20: return "16px"
+    if n <= 38: return "24px"
+    return "40px"
+def _radius(m):
+    vals = []
+    for t in m.group(1).split():
+        mm = _re.fullmatch(r"(\d+)px", t)
+        vals.append(_r(mm.group(1)) if mm else t)
+    return "border-radius:" + " ".join(vals)
+out = _re.sub(r"border-radius:([^;}\"]+)", _radius, out)
+
 (D / "maquette-accueil-v2.html").write_text(out, encoding="utf-8")
 print("✓ docs/design/maquette-accueil-v2.html")
