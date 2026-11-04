@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mascottes SYNEO — Syn &amp; Néo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&amp;display=swap">
+<style>
+:root{--bleu:#02449B;--orange:#FC4C02;--encre:#0B1A3A;--fond:#FFFFFF;--gris:#4A5672;--clair:#F3F5FA}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--encre);font-family:Poppins,system-ui,sans-serif}
+img.px{image-rendering:pixelated;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:56px 40px}
+h1{font-size:64px;line-height:1;margin:0 0 12px;font-weight:800}
+h2{font-size:34px;margin:0 0 20px;font-weight:800}
+p{font-size:17px;line-height:1.6;color:var(--gris);margin:0}
+.u{background:linear-gradient(transparent 62%, #FFD2BD 62%)}
+.tag{display:inline-block;background:var(--encre);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;margin-bottom:14px;clip-path:polygon(0 0,92% 0,92% 30%,100% 30%,100% 100%,0 100%)}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cast{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px}
+.card{background:var(--clair);padding:28px;display:flex;gap:24px;align-items:center}
+.card h3{margin:0 0 6px;font-size:26px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pose{border-top:3px solid var(--encre);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.pose .img{height:150px;display:flex;align-items:flex-end;justify-content:center;background:var(--clair)}
+.pose strong{font-size:17px}
+.pose span{font-size:14px;color:var(--gris)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:280px;height:70px;color:#fff;font-weight:800;font-size:22px;text-decoration:none}
+.btn img{position:absolute;inset:0;width:100%;height:100%}
+.btn b{position:relative}
+.demo{border:3px solid var(--encre);padding:40px;position:relative;overflow:hidden}
+.demo h4{font-size:52px;line-height:1.02;margin:0 0 18px;font-weight:800;max-width:620px}
+section{margin-top:72px}
+.rules li{font-size:16px;line-height:1.6;color:var(--gris);margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Couverture -->
+  <div class="hero">
+    <div>
+      <span class="tag">Identité SYNEO · mascottes v1</span>
+      <h1>Voici <span style="color:var(--bleu)">Syn</span> &amp; <span style="color:var(--orange)">Néo</span>.</h1>
+      <p>Deux personnages en pixel art nés du logo SYNEO. Syn le bleu, plus jeune, apprend. Néo l'orange, plus grand, transmet. Ensemble : <strong class="u">SYN + NÉO = SYNEO</strong>. Main dans la main, comme les personnages du logo, ils accompagnent le visiteur tout au long du site.</p>
+    </div>
+    <img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="Syn et Néo main dans la main" style="width:100%">
+  </div>
+
+  <!-- Personnages -->
+  <section>
+    <h2>Les personnages</h2>
+    <div class="cast">
+      <div class="card">
+        <img class="px" src="../../assets/img/mascotte/syn-salut.svg" alt="Syn" style="width:150px">
+        <div><h3 style="color:var(--bleu)">Syn</h3><p>Bleu SYNEO, écharpe orange. Le petit du groupe : l'étudiant, le porteur de projet qui se lance. Curieux, il pose les questions.</p></div>
+      </div>
+      <div class="card">
+        <img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="Néo" style="width:150px">
+        <div><h3 style="color:var(--orange)">Néo</h3><p>Orange SYNEO, écharpe bleue. Le grand : l'entrepreneur confirmé, le mentor. Il transmet et montre le chemin.</p></div>
+      </div>
+    </div>
+    <p style="margin-top:18px">L'<strong>écharpe</strong> reprend la courbe du logo. Elle est toujours de la couleur de l'autre personnage : chacun porte un bout de son partenaire. C'est la synergie.</p>
+  </section>
+
+  <!-- Poses -->
+  <section>
+    <h2>Une pose par rubrique du site</h2>
+    <div class="grid">
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:130px"></div><strong>Accueil</strong><span>Néo salue le visiteur à côté du grand titre.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/neo-micro.svg" alt="" style="height:130px"></div><strong>Conférences</strong><span>Néo prend le micro.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:140px"></div><strong>Vulgarisation</strong><span>Syn a une idée : l'ampoule s'allume.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:120px"></div><strong>PRISME</strong><span>Néo tient le prisme d'or, qui sépare la lumière en bleu et orange.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/syn-escalier.svg" alt="" style="height:140px"></div><strong>Entreprendre / incubation</strong><span>Syn monte les marches, étape par étape.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:130px"></div><strong>Tech &amp; IA</strong><span>Syn code sur son ordinateur.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="height:120px"></div><strong>Networking / partenariats</strong><span>Syn et Néo main dans la main, comme sur le logo.</span></div>
+      <div class="pose"><div class="img"><img class="px" src="../../assets/img/mascotte/avatar.svg" alt="" style="height:110px;margin-bottom:12px"></div><strong>Avatar</strong><span>La tête de Néo : favicon, photo de profil Facebook et Instagram, WhatsApp.</span></div>
+    </div>
+  </section>
+
+  <!-- Éléments -->
+  <section class="row">
+    <div>
+      <h2>Boutons &amp; confettis pixel</h2>
+      <p>Les boutons ont des bords en escalier, comme un écran de jeu vidéo. Des confettis carrés bleus, orange et dorés sont semés autour des titres et des personnages.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <a class="btn" href="#"><img class="px" src="../../assets/img/mascotte/bouton.svg" alt=""><b>C'est parti ▸</b></a>
+      <img class="px" src="../../assets/img/mascotte/confettis.svg" alt="" style="width:100%">
+    </div>
+  </section>
+
+  <!-- Mise en situation -->
+  <section>
+    <h2>Mise en situation : le haut de la page d'accueil</h2>
+    <div class="demo">
+      <img class="px" src="../../assets/img/mascotte/confettis.svg" alt="" style="position:absolute;top:18px;right:30px;width:320px">
+      <span class="tag">PRISME · 1re édition</span>
+      <h4>Seuls, on crée des entreprises. <span style="color:var(--orange)">Ensemble, on bâtit des écosystèmes.</span></h4>
+      <p style="max-width:560px;margin-bottom:28px">SYNEO connecte les jeunes porteurs de projet, les écoles, les entreprises et les institutions. Prochain rendez-vous : <strong class="u">le 18 novembre à l'ENSPY</strong>.</p>
+      <div style="display:flex;align-items:flex-end;gap:16px">
+        <a class="btn" href="#"><img class="px" src="../../assets/img/mascotte/bouton.svg" alt=""><b>Je m'inscris ▸</b></a>
+        <img class="px" src="../../assets/img/mascotte/neo-salut.svg" alt="Néo salue" style="height:120px">
+      </div>
+    </div>
+  </section>
+
+  <!-- Règles -->
+  <section>
+    <h2>Règles d'usage</h2>
+    <ul class="rules">
+      <li><strong>Toujours en pixels nets</strong> (rendu « pixelated »), jamais flous ni lissés.</li>
+      <li><strong>Une mascotte par section</strong>, posée au bord d'un titre, d'un bouton ou d'une photo. Elle accompagne et ne cache jamais le contenu.</li>
+      <li><strong>Ils ne parlent pas au nom de SYNEO</strong> dans les textes officiels : ils illustrent, ils ne signent pas.</li>
+      <li><strong>Nouvelles poses</strong> : même grille, même contour foncé, mêmes couleurs, générées par <code>scripts/mascotte.py</code>.</li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>
