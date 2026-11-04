@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SYNEO — accueil, pixel art animé</title>
+<link rel="icon" href="../../assets/img/mascotte/avatar.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{--bg:#F3E9DD;--nuit:#0E2347;--bleu:#02449B;--orange:#FC4C02;--or:#F2B233;--creme:#FBF8F3;--gris:#5A6478;
+  --px:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px))}
+*{box-sizing:border-box}
+body{margin:0;background:#2E2622;font-family:'Instrument Sans',system-ui,sans-serif;color:var(--nuit)}
+img.px{image-rendering:pixelated;display:block}
+.page{max-width:1360px;margin:40px auto;background:var(--bg);border-radius:36px;padding:26px 36px 0;overflow:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:4px 20px 22px}
+.brand img{height:46px;display:block}
+nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500}
+nav a{color:var(--nuit);text-decoration:none}
+nav a[aria-current]{font-weight:700}
+.tools{display:flex;align-items:center;gap:14px}
+.ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;padding:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;height:46px;padding:0 24px;font-family:Syne,sans-serif;font-weight:700;font-size:16px;text-decoration:none;clip-path:var(--px)}
+.btn.dark{background:var(--bleu);color:#fff}
+.btn.gold{background:var(--or);color:var(--nuit);height:52px;padding:0 28px;font-size:17px}
+
+/* ---------- Haut de page ---------- */
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.card{position:absolute;inset:0 0 70px 0;background:var(--nuit);border-radius:44px;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:8px 8px}
+.copy{position:relative;padding:72px 0 0 64px;color:#fff;z-index:3}
+h1{margin:0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(30px,3.1vw,44px);line-height:1.12;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--or)}
+.chip{display:inline-flex;vertical-align:-.12em;margin:0 .12em}
+.chip img{width:1.05em;height:1.05em;margin-right:-.3em;background:var(--creme);border:3px solid var(--nuit);border-radius:50%;image-rendering:pixelated}
+.row{display:flex;align-items:center;gap:28px;margin-top:40px;flex-wrap:wrap}
+.stat b{display:block;font-family:Syne,sans-serif;font-size:30px;font-weight:700;line-height:1}
+.stat span{display:block;font-size:13px;color:var(--or);margin-top:6px;max-width:170px}
+
+/* Scène pixel : 3 couches superposées, personnages animés */
+.scene{position:relative;z-index:2;width:640px;max-width:110%;aspect-ratio:640/600;margin:-10px 0 0 -4%}
+.scene > .layer,.scene > .group{position:absolute;inset:0;width:100%;height:100%;display:block}
+.layer{image-rendering:pixelated}
+.group{background:url(../../assets/img/hero-pixel/hp-groupe.png) 0 0/400% 100% no-repeat;image-rendering:pixelated;animation:walk 1.4s steps(4) infinite}
+@keyframes walk{to{background-position:133.333% 0}}
+.spark{position:absolute;width:4.4%;aspect-ratio:1;animation:blink 1.8s steps(2) infinite}
+.spark::before,.spark::after{content:"";position:absolute;background:var(--or)}
+.spark::before{left:37.5%;top:0;width:25%;height:100%}
+.spark::after{top:37.5%;left:0;height:25%;width:100%}
+@keyframes blink{50%{opacity:0;transform:scale(.6)}}
+.coin{position:absolute;width:4%;aspect-ratio:1;background:var(--orange);clip-path:polygon(25% 0,75% 0,75% 25%,100% 25%,100% 75%,75% 75%,75% 100%,25% 100%,25% 75%,0 75%,0 25%,25% 25%);animation:bob 2.4s steps(3) infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.tags{position:absolute;left:0;bottom:0;width:48%;background:var(--bleu);border-radius:30px;padding:26px 30px;display:flex;flex-wrap:wrap;gap:12px;z-index:3;box-shadow:0 0 0 16px var(--bg)}
+.tags span{border:2px solid rgba(255,255,255,.85);color:#fff;padding:5px 14px;font-size:14px;font-weight:600}
+
+/* ---------- Mission ---------- */
+.mission{display:grid;grid-template-columns:1fr 150px;align-items:center;gap:40px;padding:72px 40px 40px}
+.mission h2{margin:0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(26px,2.7vw,38px);line-height:1.2;letter-spacing:-.015em}
+.mission mark{background:linear-gradient(transparent 58%,#FFD66E 58% 92%,transparent 92%);color:inherit}
+.badge{position:relative;width:140px;height:140px;display:block}
+.badge svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.badge img{position:absolute;inset:40px;width:60px;height:60px;background:var(--orange);padding:8px;clip-path:var(--px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Cartes ---------- */
+.cards{display:grid;grid-template-columns:140px repeat(3,1fr);gap:22px;padding:0 20px;align-items:start}
+.outline{display:inline-block;padding:4px 14px;font-size:14px;font-weight:600;border:2px solid currentColor}
+.c{border-radius:40px 40px 0 0;height:210px;padding:20px 24px;position:relative;overflow:hidden;color:#fff;text-decoration:none;display:block}
+.c.o{background:#E2622A}.c.g{background:var(--or);color:var(--nuit)}.c.b{background:var(--bleu)}
+.c img{position:absolute;left:50%;bottom:-6px;height:150px;transform:translateX(-50%);transition:transform .25s steps(3)}
+.c:hover img{transform:translate(-50%,-10px)}
+
+@media (prefers-reduced-motion:reduce){.group,.spark,.coin,.badge svg{animation:none}}
+@media (max-width:900px){
+  .page{margin:0;border-radius:0;padding:16px 16px 0}
+  nav ul,.tools .ico{display:none}
+  .hero{grid-template-columns:1fr}
+  .card{inset:0}
+  .copy{padding:44px 26px 0}
+  .scene{width:100%;max-width:100%;margin:10px 0 0}
+  .tags{position:relative;width:100%;margin-top:16px;box-shadow:none}
+  .mission{grid-template-columns:1fr;padding:48px 8px 24px}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a class="brand" href="#"><img src="../../assets/img/logo-syneo-transparent.png" alt="SYNEO"></a>
+    <ul><li><a href="#" aria-current="page">Accueil</a></li><li><a href="#">PRISME</a></li><li><a href="maquette-conferences.html">Conférences</a></li><li><a href="#">Partenaires</a></li></ul>
+    <div class="tools">
+      <button class="ico" type="button" aria-label="Rechercher"><svg width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><path d="M3 1h3v1h1v1h1v3h-1v1h-1v1h-3v-1h-1v-1h-1v-3h1v-1h1zM3 2v1h-1v3h1v1h3v-1h1v-3h-1v-1z M7 7h1v1h1v1h-1v-1h-1z" fill="#0E2347"/></svg></button>
+      <button class="ico" type="button" aria-label="Changer de langue"><svg width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><path d="M3 0h4v1h1v1h1v2h1v2h-1v2h-1v1h-1v1h-4v-1h-1v-1h-1v-2h-1v-2h1v-2h1v-1h1z" fill="#0E2347"/><path d="M4 1h2v8h-2zM1 4h8v2h-8z" fill="#F3E9DD"/></svg></button>
+      <a class="btn dark" href="#">Rejoindre</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="card" aria-hidden="true"></div>
+    <div class="copy">
+      <h1>Connecter les talents<br><span class="chip" aria-hidden="true"><img src="../../assets/img/mascotte/avatar.svg" alt=""><img src="../../assets/img/mascotte/avatar.svg" alt="" style="filter:hue-rotate(185deg) saturate(1.4)"><img src="../../assets/img/mascotte/avatar.svg" alt="" style="filter:hue-rotate(20deg)"></span> pour <em>construire</em><br>le développement</h1>
+      <div class="row">
+        <a class="btn gold" href="#">Je m'inscris</a>
+        <div class="stat"><b>500 – 1 000</b><span>participants attendus le 18 novembre</span></div>
+        <div class="stat"><b>60 000</b><span>spécialistes IA visés d'ici 2040</span></div>
+      </div>
+    </div>
+    <div class="scene" role="img" aria-label="En pixel art, les quatre personnages du logo SYNEO, du plus petit en bleu au plus grand en orange, se tiennent la main sur la courbe du logo ; un grand ruban doré en forme de S s'enroule autour d'eux et le plus petit fait signe de la main">
+      <img class="layer" src="../../assets/img/hero-pixel/hp-fond.png" alt="">
+      <span class="group"></span>
+      <img class="layer" src="../../assets/img/hero-pixel/hp-avant.png" alt="">
+      <span class="spark" style="left:8%;top:30%"></span>
+      <span class="spark" style="left:86%;top:20%;animation-delay:.6s"></span>
+      <span class="spark" style="left:40%;top:6%;animation-delay:1.1s;width:3%"></span>
+      <span class="coin" style="left:10%;top:12%"></span>
+      <span class="coin" style="left:90%;top:52%;animation-delay:.8s;background:#F2B233"></span>
+    </div>
+    <div class="tags"><span>Sensibilisation</span><span>Formation</span><span>Incubation</span><span>Mise en réseau</span></div>
+  </section>
+
+  <section class="mission">
+    <h2>Seuls, nous créons des entreprises. <mark>Ensemble, nous bâtissons des écosystèmes.</mark></h2>
+    <a class="badge" href="#" aria-label="En savoir plus sur SYNEO">
+      <svg viewBox="0 0 140 140" aria-hidden="true"><defs><path id="circ" d="M 70 70 m -52 0 a 52 52 0 1 1 104 0 a 52 52 0 1 1 -104 0"/></defs>
+        <text font-family="Syne" font-size="12" font-weight="700" letter-spacing="2.4" fill="#0E2347"><textPath href="#circ">EN SAVOIR PLUS · SUR SYNEO · EN SAVOIR PLUS ·</textPath></text></svg>
+      <img src="../../assets/img/mascotte/avatar.svg" alt="" style="image-rendering:pixelated">
+    </a>
+  </section>
+
+  <section class="cards">
+    <div><span class="outline">À propos</span></div>
+    <a class="c o" href="#"><span class="outline">Notre mission</span><img class="px" src="../../assets/img/mascotte/syn-idee.svg" alt=""></a>
+    <a class="c g" href="#"><span class="outline">Le programme PRISME</span><img class="px" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:130px"></a>
+    <a class="c b" href="#"><span class="outline">Nos partenaires</span><img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="height:130px"></a>
+  </section>
+</div>
+</body>
+</html>
