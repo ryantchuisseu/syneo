@@ -29,18 +29,18 @@ CSS = """
 
 /* Programme : liste dans un bloc blanc arrondi */
 .prog-box{background:var(--creme);border-radius:40px;padding:12px 44px}
-.row{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) 140px 56px minmax(0,1fr);align-items:center;gap:20px;padding:26px 0 30px;border-bottom:2px solid var(--nuit);text-decoration:none;color:inherit}
-.row:last-child{border-bottom:0}
-.row .tagp{grid-column:1/-1;justify-self:start;background:var(--nuit);color:#fff;font-size:13px;font-weight:700;padding:6px 12px;clip-path:var(--px)}
-.row .tagp em{font-style:normal;color:var(--or)}
-.row h3{margin:0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(26px,3vw,42px);line-height:1;letter-spacing:-.02em;color:var(--bleu)}
-.row .mas{justify-self:center;align-self:end;margin-bottom:-32px;height:100px}
+.prow{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) 140px 56px minmax(0,1fr);align-items:center;gap:20px;padding:26px 0 30px;border-bottom:2px solid var(--nuit);text-decoration:none;color:inherit}
+.prow:last-child{border-bottom:0}
+.prow .tagp{grid-column:1/-1;justify-self:start;background:var(--nuit);color:#fff;font-size:13px;font-weight:700;padding:6px 12px;clip-path:var(--px)}
+.prow .tagp em{font-style:normal;color:var(--or)}
+.prow h3{margin:0;font-family:Syne,sans-serif;font-weight:700;font-size:clamp(26px,3vw,42px);line-height:1;letter-spacing:-.02em;color:var(--bleu)}
+.prow .mas{justify-self:center;align-self:end;margin-bottom:-32px;height:100px}
 .arw{width:48px;height:40px;position:relative;transition:transform .2s steps(2)}
 .arw::before{content:"";position:absolute;left:0;top:16px;width:34px;height:8px;background:var(--nuit)}
 .arw::after{content:"";position:absolute;right:6px;top:4px;width:22px;height:22px;border-top:8px solid var(--nuit);border-right:8px solid var(--nuit);transform:rotate(45deg)}
-.row:hover .arw{transform:translateX(8px)}
-.row .desc{margin:0;font-weight:600;font-size:17px;line-height:1.55}
-.row .desc u{text-decoration-color:var(--orange);text-decoration-thickness:3px;text-underline-offset:5px}
+.prow:hover .arw{transform:translateX(8px)}
+.prow .desc{margin:0;font-weight:600;font-size:17px;line-height:1.55}
+.prow .desc u{text-decoration-color:var(--orange);text-decoration-thickness:3px;text-underline-offset:5px}
 
 /* Agenda : bloc nuit arrondi, tuiles dates */
 .agenda{background:var(--nuit);border-radius:44px;padding:56px 48px 48px;color:#fff;position:relative;overflow:hidden}
@@ -116,13 +116,13 @@ CSS = """
 
 @media (max-width:1000px){
   .tiles,.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .row{grid-template-columns:1fr 110px minmax(0,1fr)}.arw{display:none}
+  .prow{grid-template-columns:1fr 110px minmax(0,1fr)}.arw{display:none}
   .foot .cols{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   .sec{padding:64px 0 0}
   .prog-box{padding:8px 22px}
-  .row{grid-template-columns:1fr;gap:10px}.row .mas{display:none}
+  .prow{grid-template-columns:1fr;gap:10px}.prow .mas{display:none}
   .agenda{padding:40px 22px}
   .tiles,.trib,.partners,.stats{grid-template-columns:1fr}
   .ligne{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column}
@@ -161,11 +161,11 @@ SECTIONS = f"""
       <p>Une plateforme nationale de sensibilisation, de formation, d'incubation et de mise en réseau, <span class="hl">de novembre 2026 à décembre 2027</span>.</p>
     </div>
     <div class="prog-box">
-      <a class="row" href="#"><span class="tagp">18 novembre 2026</span><h3>Conférence inaugurale</h3><img class="px mas" src="../../assets/img/mascotte/neo-micro.svg" alt=""><span class="arw" aria-hidden="true"></span><p class="desc">À l'<u>ENSPY</u>, de 10 h à 13 h 30 : lancement officiel, panel et premier tournage de la série.</p></a>
-      <a class="row" href="maquette-conferences.html"><span class="tagp">Janvier → juin 2027</span><h3>Conférences thématiques</h3><img class="px mas" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:112px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>6 conférences</u> itinérantes, chacune sur un site d'enseignement supérieur différent.</p></a>
-      <a class="row" href="#"><span class="tagp">Juillet → novembre 2027</span><h3>Formation &amp; incubation</h3><img class="px mas" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Une cohorte de <u>40 à 60 porteurs de projet</u> formés et accompagnés.</p></a>
-      <a class="row" href="#"><span class="tagp">Toute l'année · <em>série</em></span><h3>Les Bâtisseurs</h3><img class="px mas" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:86px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>24 épisodes</u> diffusés sur la CRTV et les médias partenaires.</p></a>
-      <a class="row" href="#"><span class="tagp">Décembre 2027</span><h3>Forum National</h3><img class="px mas" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Forum National de l'<u>écosystème entrepreneurial</u>, en clôture du programme.</p></a>
+      <a class="prow" href="#"><span class="tagp">18 novembre 2026</span><h3>Conférence inaugurale</h3><img class="px mas" src="../../assets/img/mascotte/neo-micro.svg" alt=""><span class="arw" aria-hidden="true"></span><p class="desc">À l'<u>ENSPY</u>, de 10 h à 13 h 30 : lancement officiel, panel et premier tournage de la série.</p></a>
+      <a class="prow" href="maquette-conferences.html"><span class="tagp">Janvier → juin 2027</span><h3>Conférences thématiques</h3><img class="px mas" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:112px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>6 conférences</u> itinérantes, chacune sur un site d'enseignement supérieur différent.</p></a>
+      <a class="prow" href="#"><span class="tagp">Juillet → novembre 2027</span><h3>Formation &amp; incubation</h3><img class="px mas" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Une cohorte de <u>40 à 60 porteurs de projet</u> formés et accompagnés.</p></a>
+      <a class="prow" href="#"><span class="tagp">Toute l'année · <em>série</em></span><h3>Les Bâtisseurs</h3><img class="px mas" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:86px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>24 épisodes</u> diffusés sur la CRTV et les médias partenaires.</p></a>
+      <a class="prow" href="#"><span class="tagp">Décembre 2027</span><h3>Forum National</h3><img class="px mas" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Forum National de l'<u>écosystème entrepreneurial</u>, en clôture du programme.</p></a>
     </div>
   </section>
 
@@ -237,5 +237,69 @@ out = src.replace("</style>", CSS, 1)
 out = re.sub(r"  <section class=\"cards\">.*?</section>", CARDS, out, count=1, flags=re.S)
 out = out.replace("</div>\n</body>", SECTIONS + "</div>\n<a class=\"wa\" href=\"#\" aria-label=\"Écrire à SYNEO sur WhatsApp\"><img src=\"../../assets/img/mascotte/avatar.svg\" alt=\"\"><span>Une question ? WhatsApp</span></a>\n</body>", 1)
 out = out.replace("<title>SYNEO — accueil, pixel art animé</title>", "<title>SYNEO — Connecter les talents, construire le développement</title>")
+
+# ---------------------------------------------------------------------------
+# Grain 8 bits, bandes à vague pixel et décors (ajoutés après coup)
+import math as _m
+
+
+def wave(color, seed=0, flip=False):
+    """Bord de vague en escalier de pixels (marches de 8 px)."""
+    d = "M0 64 "
+    for i in range(0, 1441, 16):
+        y = 24 + 14 * _m.sin(i / 1440 * 2 * _m.pi * 1.5 + seed) + 6 * _m.sin(i / 90 + seed * 2)
+        y = round(y / 8) * 8
+        d += f"V{y} H{i + 16} "
+    d += "V64 Z"
+    tf = ' style="transform:scaleY(-1)"' if flip else ""
+    return f'<svg class="wave" viewBox="0 0 1456 64" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true"{tf}><path d="{d}" fill="{color}"/></svg>'
+
+
+def deco(name, style):
+    return f'<img class="deco" src="../../assets/img/deco/{name}.svg" alt="" style="{style}">'
+
+
+CSS2 = """
+/* ======== Grain 8 bits ======== */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;background:url(../../assets/img/deco/grain-clair.png) 0 0/96px 96px;image-rendering:pixelated}
+.card::after,.agenda::after{background:url(../../assets/img/deco/grain-sombre.png) 0 0/96px 96px!important;image-rendering:pixelated}
+.ligne::after,.foot::after,.band.bleu::after{content:"";position:absolute;inset:0;pointer-events:none;background:url(../../assets/img/deco/grain-sombre.png) 0 0/96px 96px;image-rendering:pixelated;z-index:1}
+.ligne .txt,.ligne .duo{z-index:3}
+/* ======== Formes ======== */
+.sec,.mission,.cards,.hero,.band{position:relative}
+.deco{position:absolute;image-rendering:pixelated;pointer-events:none;z-index:0;opacity:.18}
+.deco.vif{opacity:1}
+.mission > *, .sec > *{position:relative;z-index:1}
+.mission > .deco,.sec > .deco,.band > .deco{position:absolute;z-index:0}
+.wave{display:block;width:calc(100% + 72px);height:56px;margin:96px -36px -1px}
+.band{margin:0 -36px;padding:24px 56px 80px;background:var(--bc)}
+.band .sec{padding-top:0}
+.band.ciel{--bc:#DCEBFF}
+.band.peche{--bc:#FCE3D2}
+.wave + .band + .wave{margin-top:-1px}
+@media (max-width:900px){
+  .wave{width:calc(100% + 32px);margin:64px -16px -1px;height:36px}
+  .band{margin:0 -16px;padding:16px 16px 56px}
+  .deco{display:none}
+}
+</style>"""
+
+out = out.replace("</style>", CSS2, 1)
+out = out.replace(".card::after{content:\"\";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:8px 8px}",
+                  ".card::after{content:\"\";position:absolute;inset:0;pointer-events:none}")
+# bandes : tribune sur fond ciel, partenaires sur fond pêche
+out = out.replace("  <!-- Tribune -->\n  <section class=\"sec\" id=\"tribune\">",
+                  "  <!-- Tribune -->\n  " + wave("#DCEBFF", 1) + "\n  <div class=\"band ciel\">\n"
+                  + "  " + deco("engrenage", "right:3%;top:-10px;width:120px;opacity:.16") + deco("etincelle-orange", "left:2%;top:40px;width:39px;opacity:1") + "\n"
+                  + "  <section class=\"sec\" id=\"tribune\">")
+out = out.replace("  <!-- Partenaires -->", "  </div>\n  " + wave("#FCE3D2", 2.4) + "\n  <div class=\"band peche\">\n  "
+                  + deco("tuyau", "right:4%;top:-6px;width:200px;opacity:.16") + deco("anneau-orange", "left:3%;bottom:30px;width:60px;opacity:.9") + "\n  <!-- Partenaires -->")
+out = out.replace("  <!-- Ligne PRISME -->", "  </div>\n  " + wave("#FCE3D2", 2.4, flip=True) + "\n  <!-- Ligne PRISME -->")
+# décors semés
+out = out.replace('<section class="mission">', '<section class="mission">' + deco("engrenage", "right:20%;top:20px;width:96px") + deco("zigzag-orange", "left:1%;top:28px;width:108px;opacity:1"), 1)
+out = out.replace("  <!-- Chiffres -->\n  <section class=\"sec\">", "  <!-- Chiffres -->\n  <section class=\"sec\">" + deco("croix-or", "right:1%;top:44px;width:27px;opacity:1") + deco("anneau", "left:-14px;top:40px;width:60px"), 1)
+out = out.replace("  <!-- Programme PRISME -->\n  <section class=\"sec\" id=\"programme\">", "  <!-- Programme PRISME -->\n  <section class=\"sec\" id=\"programme\">" + deco("etincelle-or", "left:46%;top:60px;width:39px;opacity:1") + deco("tuyau", "right:-10px;top:520px;width:160px"), 1)
+out = out.replace('<div class="agenda">', '<div class="agenda">' + deco("engrenage-clair", "right:-30px;bottom:-30px;width:180px;opacity:.12") + deco("croix-or", "right:42%;top:36px;width:27px;opacity:1"), 1)
+
 (D / "maquette-accueil-v2.html").write_text(out, encoding="utf-8")
 print("✓ docs/design/maquette-accueil-v2.html")
