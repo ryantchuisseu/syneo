@@ -138,9 +138,9 @@ CSS = """
 
 CARDS = """  <section class="cards">
     <div><span class="outline">À propos</span></div>
-    <a class="c o" href="#"><span class="outline">Notre mission</span><p>Sensibiliser, former, incuber et mettre en réseau les jeunes porteurs de projet.</p><img class="px" src="../../assets/img/mascotte/syn-idee.svg" alt=""></a>
-    <a class="c g" href="#programme"><span class="outline">Le programme PRISME</span><p>Treize mois et sept composantes, de la conférence inaugurale au Forum National.</p><img class="px" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:120px"></a>
-    <a class="c b" href="#partenaires"><span class="outline">Nos partenaires</span><p>Institutions, écoles, entreprises et médias qui bâtissent avec nous.</p><img class="px" src="../../assets/img/mascotte/duo-main-dans-la-main.svg" alt="" style="height:120px"></a>
+    <a class="c o" href="#"><span class="outline">Notre mission</span><p>Sensibiliser, former, incuber et mettre en réseau les jeunes porteurs de projet.</p><img class="vig" src="../../assets/img/vignettes/escalier.png" alt="Néo tend la main à Syn pour l'aider à monter les marches"></a>
+    <a class="c g" href="#programme"><span class="outline">Le programme PRISME</span><p>Treize mois et sept composantes, de la conférence inaugurale au Forum National.</p><img class="vig" src="../../assets/img/vignettes/randonnee.png" alt="Syn et Néo, sacs au dos, montent vers le drapeau au sommet"></a>
+    <a class="c b" href="#partenaires"><span class="outline">Nos partenaires</span><p>Institutions, écoles, entreprises et médias qui bâtissent avec nous.</p><img class="vig" src="../../assets/img/vignettes/poignee.png" alt="Néo serre la main d'un partenaire, Syn tient le dossier"></a>
   </section>"""
 
 SECTIONS = f"""
@@ -161,11 +161,11 @@ SECTIONS = f"""
       <p>Une plateforme nationale de sensibilisation, de formation, d'incubation et de mise en réseau, <span class="hl">de novembre 2026 à décembre 2027</span>.</p>
     </div>
     <div class="prog-box">
-      <a class="prow" href="#"><span class="tagp">18 novembre 2026</span><h3>Conférence inaugurale</h3><img class="px mas" src="../../assets/img/mascotte/neo-micro.svg" alt=""><span class="arw" aria-hidden="true"></span><p class="desc">À l'<u>ENSPY</u>, de 10 h à 13 h 30 : lancement officiel, panel et premier tournage de la série.</p></a>
-      <a class="prow" href="maquette-conferences.html"><span class="tagp">Janvier → juin 2027</span><h3>Conférences thématiques</h3><img class="px mas" src="../../assets/img/mascotte/syn-idee.svg" alt="" style="height:112px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>6 conférences</u> itinérantes, chacune sur un site d'enseignement supérieur différent.</p></a>
-      <a class="prow" href="#"><span class="tagp">Juillet → novembre 2027</span><h3>Formation &amp; incubation</h3><img class="px mas" src="../../assets/img/mascotte/syn-laptop.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Une cohorte de <u>40 à 60 porteurs de projet</u> formés et accompagnés.</p></a>
-      <a class="prow" href="#"><span class="tagp">Toute l'année · <em>série</em></span><h3>Les Bâtisseurs</h3><img class="px mas" src="../../assets/img/mascotte/neo-prisme.svg" alt="" style="height:86px"><span class="arw" aria-hidden="true"></span><p class="desc"><u>24 épisodes</u> diffusés sur la CRTV et les médias partenaires.</p></a>
-      <a class="prow" href="#"><span class="tagp">Décembre 2027</span><h3>Forum National</h3><img class="px mas" src="../../assets/img/mascotte/neo-salut.svg" alt="" style="height:92px"><span class="arw" aria-hidden="true"></span><p class="desc">Forum National de l'<u>écosystème entrepreneurial</u>, en clôture du programme.</p></a>
+      <a class="prow" href="#"><span class="tagp">18 novembre 2026</span><h3>Conférence inaugurale</h3><img class="mas" src="../../assets/img/vignettes/conference.png" alt="Néo au pupitre devant le public"><span class="arw" aria-hidden="true"></span><p class="desc">À l'<u>ENSPY</u>, de 10 h à 13 h 30 : lancement officiel, panel et premier tournage de la série.</p></a>
+      <a class="prow" href="maquette-conferences.html"><span class="tagp">Janvier → juin 2027</span><h3>Conférences thématiques</h3><img class="mas" src="../../assets/img/vignettes/etudier.png" alt="Syn révise au bureau, l'idée s'allume"><span class="arw" aria-hidden="true"></span><p class="desc"><u>6 conférences</u> itinérantes, chacune sur un site d'enseignement supérieur différent.</p></a>
+      <a class="prow" href="#"><span class="tagp">Juillet → novembre 2027</span><h3>Formation &amp; incubation</h3><img class="mas" src="../../assets/img/vignettes/atelier.png" alt="Syn code, Néo le guide"><span class="arw" aria-hidden="true"></span><p class="desc">Une cohorte de <u>40 à 60 porteurs de projet</u> formés et accompagnés.</p></a>
+      <a class="prow" href="#"><span class="tagp">Toute l'année · <em>série</em></span><h3>Les Bâtisseurs</h3><img class="mas" src="../../assets/img/vignettes/tournage.png" alt="Syn filme Néo qui salue"><span class="arw" aria-hidden="true"></span><p class="desc"><u>24 épisodes</u> diffusés sur la CRTV et les médias partenaires.</p></a>
+      <a class="prow" href="#"><span class="tagp">Décembre 2027</span><h3>Forum National</h3><img class="mas" src="../../assets/img/vignettes/forum.png" alt="Trois personnages échangent sous une banderole"><span class="arw" aria-hidden="true"></span><p class="desc">Forum National de l'<u>écosystème entrepreneurial</u>, en clôture du programme.</p></a>
     </div>
   </section>
 
@@ -307,23 +307,7 @@ import random as _r
 
 
 def bits(seed, n=8):
-    rnd = _r.Random(seed)
-    cols = ["#02449B", "#02449B", "#FC4C02", "#F2B233", "#2E6FD3"]
-    shapes = [[(0, 0)], [(0, 0)], [(0, 0), (1, 0)], [(0, 0), (0, 1)], [(0, 0), (1, 1)], [(0, 0), (1, 0), (1, 1)]]
-    out = []
-    for k in range(n):
-        side = rnd.random()
-        # uniquement dans les marges latérales, ou dans l'espace vide au-dessus du contenu
-        x = rnd.uniform(-2.2, .8) if side < .45 else rnd.uniform(98.6, 101.4) if side < .9 else rnd.uniform(35, 65)
-        y = rnd.uniform(6, 94) if side < .9 else rnd.uniform(1, 4)
-        u = rnd.choice((8, 8, 10, 12))
-        c = rnd.choice(cols)
-        cells = rnd.choice(shapes)
-        sh = ",".join(f"{dx * u}px {dy * u}px 0 {c}" for dx, dy in cells[1:])
-        blink = ' blink' if rnd.random() < .35 else ''
-        delay = f"animation-delay:{rnd.uniform(0, 2.4):.1f}s;" if blink else ""
-        out.append(f'<i class="bit{blink}" style="left:{x:.1f}%;top:{y:.1f}%;width:{u}px;height:{u}px;background:{c};{"box-shadow:" + sh + ";" if sh else ""}{delay}"></i>')
-    return '<div class="bits" aria-hidden="true">' + "".join(out) + "</div>"
+    return f'<div class="bits" data-seed="{seed}" data-n="{n}" aria-hidden="true"></div>'
 
 
 CSS3 = """
@@ -337,12 +321,76 @@ body::after{display:none}
 @media (max-width:900px){.bits .bit:nth-child(n+5){display:none}}
 </style>"""
 out = out.replace("</style>", CSS3, 1)
-zones = [('<section class="mission">', 11, 7), ('  <section class="cards">', 12, 7),
-         ('  <!-- Chiffres -->\n  <section class="sec">', 13, 8), ('<section class="sec" id="programme">', 14, 9),
-         ('<section class="sec" id="tribune">', 15, 8), ('<div class="band peche">', 16, 7)]
+zones = [('<section class="mission">', 11, 9), ('  <section class="cards">', 12, 9),
+         ('  <!-- Chiffres -->\n  <section class="sec">', 13, 9), ('<section class="sec" id="programme">', 14, 14),
+         ('<section class="sec" id="tribune">', 15, 9), ('<div class="band peche">', 16, 9)]
 for marker, seed, n in zones:
     assert marker in out, marker
     out = out.replace(marker, marker + bits(seed, n), 1)
+
+# ---------------------------------------------------------------------------
+# Charte sans jaune + mise en page des vignettes + placement des bits
+CSS4 = """
+:root{--or:#FF8A3D;--ciel:#DCEBFF;--peche:#FFD2BD}
+.btn.gold{background:var(--orange);color:#fff}
+.c.g{background:var(--ciel);color:var(--nuit)}
+.st:nth-child(2){background:var(--ciel)}
+.hl,.mission mark{background:linear-gradient(transparent 58%,var(--peche) 58% 92%,transparent 92%)!important}
+.agenda .hl{background:var(--peche)!important}
+/* Cartes à propos : la scène occupe tout le bas */
+.c{display:flex;flex-direction:column;min-height:0;padding:22px 22px 0}
+.c .outline{align-self:flex-start}
+.c img.vig{position:static;transform:none;display:block;width:100%;height:auto;margin-top:18px;image-rendering:pixelated}
+.c:hover img.vig{transform:translateY(-6px)}
+/* Programme : grande scène entre le titre et le texte */
+.prow{grid-template-columns:minmax(0,.9fr) 252px 52px minmax(0,1fr)}
+.prow .mas{width:252px;height:auto;margin:0;align-self:center;image-rendering:pixelated}
+@media (max-width:1000px){.prow{grid-template-columns:1fr 200px minmax(0,1fr)}.prow .mas{width:200px}}
+@media (max-width:900px){.prow .mas{display:block;width:100%;max-width:300px}}
+</style>"""
+out = out.replace("</style>", CSS4, 1)
+for a, b in (("#F2B233", "#FF8A3D"), ("#FFD66E", "#FFD2BD"), ("#C98E1B", "#C2410C")):
+    out = out.replace(a, b)
+
+JS = """
+<script>
+/* Bits tech : placés au hasard (graine fixe) dans les espaces vides, jamais sur du texte ni sur une carte */
+(function () {
+  const COLS = ['#02449B', '#02449B', '#2E6FD3', '#FC4C02', '#FF8A3D'];
+  const SHAPES = [[[0,0]], [[0,0]], [[0,0],[1,0]], [[0,0],[0,1]], [[0,0],[1,1]], [[0,0],[1,0],[1,1]]];
+  const OBST = 'h2,h3,p,a,img,.outline,.st,.c,.prog-box,.tc,.pt,.tiles,.badge,.btn,.sec-head > *';
+  function rng(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function place() {
+    const small = innerWidth < 900;
+    document.querySelectorAll('.bits').forEach(box => {
+      box.innerHTML = '';
+      const host = box.parentElement, hr = host.getBoundingClientRect();
+      const r = rng(+box.dataset.seed), n = small ? Math.ceil(+box.dataset.n / 2) : +box.dataset.n;
+      const obs = [...host.querySelectorAll(OBST)].filter(e => !box.contains(e)).map(e => { const b = e.getBoundingClientRect(); return [b.left - hr.left - 14, b.top - hr.top - 14, b.right - hr.left + 14, b.bottom - hr.top + 14]; });
+      const placed = [];
+      for (let k = 0, tries = 0; k < n && tries < 600; tries++) {
+        const u = [8, 8, 10, 12][Math.floor(r() * 4)], sh = SHAPES[Math.floor(r() * SHAPES.length)];
+        const x = r() * (hr.width - 3 * u), y = r() * (hr.height - 3 * u);
+        const box2 = [x, y, x + 2 * u, y + 2 * u];
+        const hit = q => !(box2[2] < q[0] || box2[0] > q[2] || box2[3] < q[1] || box2[1] > q[3]);
+        if (obs.some(hit) || placed.some(q => Math.hypot(q[0] - x, q[1] - y) < 90)) continue;
+        placed.push(box2); k++;
+        const c = COLS[Math.floor(r() * COLS.length)];
+        const i = document.createElement('i');
+        i.className = 'bit' + (r() < .35 ? ' blink' : '');
+        i.style.cssText = `left:${x}px;top:${y}px;width:${u}px;height:${u}px;background:${c};animation-delay:${(r() * 2.4).toFixed(1)}s;` +
+          (sh.length > 1 ? 'box-shadow:' + sh.slice(1).map(([dx, dy]) => `${dx * u}px ${dy * u}px 0 ${c}`).join(',') : '');
+        box.appendChild(i);
+      }
+    });
+  }
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(place, 150); });
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(place));
+})();
+</script>
+</body>"""
+out = out.replace("</body>", JS, 1)
+out = out.replace("@media (max-width:900px){.bits .bit:nth-child(n+5){display:none}}", "")
 
 (D / "maquette-accueil-v2.html").write_text(out, encoding="utf-8")
 print("✓ docs/design/maquette-accueil-v2.html")

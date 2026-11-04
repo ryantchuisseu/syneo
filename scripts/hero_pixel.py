@@ -31,10 +31,10 @@ def hx(c):
 INK = hx("#0A1633")
 SKY = [hx(c) for c in ("#0F2250", "#14295C", "#1A3268", "#213C75", "#2A4783")]
 CITY, CITY_L, HILL = hx("#0F2049"), hx("#16295A"), hx("#122650")
-WIN, WIN2, RED = hx("#FFD66E"), hx("#FFB35C"), hx("#FC4C02")
+WIN, WIN2, RED = hx("#FFC29A"), hx("#FF8A3D"), hx("#FC4C02")
 MOON, MOON_D = hx("#FFF1C9"), hx("#E8D19A")
 STAR = hx("#FBF8F3")
-G = dict(d=hx("#A8700F"), b=hx("#E9A42A"), l=hx("#FFCC55"), s=hx("#FFF0B8"))   # ruban doré
+G = dict(d=hx("#5E87C9"), b=hx("#A9C6EF"), l=hx("#DCEBFF"), s=hx("#FFFFFF"))   # ruban bleu ciel
 SHOE, SHOE_L = hx("#1B1F2E"), hx("#3A4258")
 EYE = hx("#FBF8F3")
 

@@ -13,7 +13,7 @@ OUT = pathlib.Path(__file__).resolve().parent.parent / "assets" / "img" / "masco
 
 INK = "#0B1A3A"     # contour
 WHITE = "#FFFFFF"
-GOLD, GOLD_L, GOLD_D = "#F2B233", "#FFD66E", "#B97F0E"
+GOLD, GOLD_L, GOLD_D = "#FF8A3D", "#FFC29A", "#C2410C"
 GREY, GREY_L = "#8C98B3", "#C9D1E2"
 
 # Palettes tirées du logo SYNEO

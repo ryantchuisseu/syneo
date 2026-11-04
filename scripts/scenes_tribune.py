@@ -33,7 +33,7 @@ C = {k: hx(v) for k, v in dict(
     grey="#8C98B3", grey_l="#C9D1E2", white="#F4F7FC", screen="#7CC4FF", screen_d="#3E86D6",
     night="#0A1530", sky="#16285A", city="#24407E", star="#F4F7FC", moon="#FFE8B0",
     blue="#02449B", blue_l="#2E6FD3", orange="#FC4C02", orange_l="#FF8A3D",
-    gold="#F2B233", gold_l="#FFD66E", ciel="#DCEBFF", peche="#FFD9C4",
+    gold="#FF8A3D", gold_l="#FFC29A", ciel="#DCEBFF", peche="#FFD9C4",
     leaf="#4F8A5B", leaf_l="#7DB36F", leaf_d="#356146", pot="#C4583A", pot_d="#8E3D2A",
 ).items() if len(v) == 7}
 C["wall_l"] = hx("#223A71")

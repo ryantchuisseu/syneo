@@ -23,8 +23,8 @@ C = {k: hx(v) for k, v in dict(
     ink="#0B1A3A", sky1="#BFD6F2", sky2="#DCE8F6", sky3="#FBE6D4", dusk1="#2B3F7A", dusk2="#6B5C8E", dusk3="#F2A36B",
     grass="#6F9A5C", grass_l="#93B978", road="#B9AFA3", road_l="#D6CDC1", earth="#B5654A",
     white="#F4F1EA", white_d="#D8D2C6", cream="#EADBC0", cream_d="#CDB892", grey="#A9B2C4", grey_d="#7D879C",
-    glass="#7FA6D6", glass_l="#B7D0EE", glass_n="#FFD66E",
-    blue="#02449B", blue_l="#2E6FD3", orange="#FC4C02", orange_l="#FF8A3D", gold="#F2B233", red="#C4583A",
+    glass="#7FA6D6", glass_l="#B7D0EE", glass_n="#FFC29A",
+    blue="#02449B", blue_l="#2E6FD3", orange="#FC4C02", orange_l="#FF8A3D", gold="#7FA6D6", red="#C4583A",
     leaf="#4F8A5B", leaf_l="#7DB36F", leaf_d="#356146", trunk="#7B5A43",
 ).items()}
 

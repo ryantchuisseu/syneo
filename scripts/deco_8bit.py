@@ -111,7 +111,7 @@ def main():
     for name, fn in (("engrenage", engrenage), ("tuyau", tuyau), ("etincelle", etincelle),
                      ("anneau", anneau), ("zigzag", zigzag), ("croix", croix)):
         cells, w, h = fn()
-        for tone, col in (("", "#0B1A3A"), ("-clair", "#FBF8F3"), ("-or", "#F2B233"), ("-orange", "#FC4C02")):
+        for tone, col in (("", "#0B1A3A"), ("-clair", "#FBF8F3"), ("-or", "#FF8A3D"), ("-orange", "#FC4C02")):
             (OUT / f"{name}{tone}.svg").write_text(svg_from(cells, w, h, col, name), encoding="utf-8")
     print("✓ assets/img/deco/")
 
