@@ -274,6 +274,7 @@ def main():
     jobs = {
         "yaounde-clair": yaounde("#FFFFFF", "Silhouette de Yaoundé"),
         "yaounde-bleu": yaounde("#02449B", "Silhouette de Yaoundé"),
+        "yaounde-nuit": yaounde("#1A3878", "Silhouette de Yaoundé"),
         "avatar": avatar(),
         "syn-salut": pose_salut(SYN, "Syn"),
         "neo-salut": pose_salut(NEO, "Néo"),
